@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cl76r8gam44x0"]
+
+[ext_resource type="Script" uid="uid://cjdw63irnjmyx" path="res://semana/semana.gd" id="1_frfks"]
+
+[node name="Semana" type="Node2D" unique_id=1507881581]
+script = ExtResource("1_frfks")
