@@ -1,12 +1,37 @@
 [gd_scene format=3 uid="uid://cl76r8gam44x0"]
 
 [ext_resource type="Script" uid="uid://cjdw63irnjmyx" path="res://semana/semana.gd" id="1_frfks"]
-[ext_resource type="Texture2D" uid="uid://dk4fx0t5y1owf" path="res://clases/fondo1.jpeg" id="2_toyyl"]
+[ext_resource type="Texture2D" uid="uid://bb6bjhph35nyr" path="res://semana/fondo.jpeg" id="2_jk0a6"]
+[ext_resource type="Script" uid="uid://nj1hdjl1vob2" path="res://addons/drag_and_drop/scripts/drop_zone.gd" id="3_by6ar"]
+[ext_resource type="Script" uid="uid://b3yrcfpcbpfhu" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_replace.gd" id="4_jk0a6"]
+[ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="5_4ukv1"]
+[ext_resource type="Texture2D" uid="uid://b7tlt8h5dmtrs" path="res://semana/libro1.webp" id="6_ruuom"]
+[ext_resource type="Script" uid="uid://crmnw3ldr3xev" path="res://addons/drag_and_drop/scripts/draggable.gd" id="7_rfwn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
+size = Vector2(113, 72)
+
+[sub_resource type="Resource" id="Resource_jk0a6"]
+script = ExtResource("4_jk0a6")
+metadata/_custom_type_script = "uid://b3yrcfpcbpfhu"
+
+[sub_resource type="Resource" id="Resource_41cau"]
+script = ExtResource("5_4ukv1")
+id = "libro"
+
+[sub_resource type="Resource" id="Resource_by6ar"]
+script = ExtResource("4_jk0a6")
+metadata/_custom_type_script = "uid://b3yrcfpcbpfhu"
+
+[sub_resource type="Resource" id="Resource_qerri"]
+script = ExtResource("5_4ukv1")
+id = "libro"
 
 [node name="Semana" type="Node2D" unique_id=1507881581]
 script = ExtResource("1_frfks")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
+layer = -1
 
 [node name="Fondo" type="TextureRect" parent="CanvasLayer" unique_id=853488876]
 anchors_preset = 15
@@ -14,6 +39,88 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_toyyl")
+texture = ExtResource("2_jk0a6")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="Calendario" type="GridContainer" parent="." unique_id=2062506544]
+offset_left = 287.0
+offset_top = 217.0
+offset_right = 1088.0
+offset_bottom = 596.0
+columns = 7
+
+[node name="Lunes" type="VBoxContainer" parent="Calendario" unique_id=159460927]
+layout_mode = 2
+
+[node name="Area2D" type="Area2D" parent="Calendario/Lunes" unique_id=1351386841]
+position = Vector2(57, 37)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Calendario/Lunes/Area2D" unique_id=1946776151]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="DropZone" type="Node2D" parent="Calendario/Lunes/Area2D" unique_id=261434136 node_paths=PackedStringArray("attach_spot")]
+script = ExtResource("3_by6ar")
+attach_spot = NodePath("..")
+drop_behavior = SubResource("Resource_jk0a6")
+snap_style = 1
+accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_41cau")])
+metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[node name="Area2D2" type="Area2D" parent="Calendario/Lunes" unique_id=1868877751]
+position = Vector2(57, 114)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Calendario/Lunes/Area2D2" unique_id=1146768036]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="DropZone" type="Node2D" parent="Calendario/Lunes/Area2D2" unique_id=1568398421 node_paths=PackedStringArray("attach_spot")]
+script = ExtResource("3_by6ar")
+attach_spot = NodePath("..")
+drop_behavior = SubResource("Resource_by6ar")
+snap_style = 1
+accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_41cau")])
+metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[node name="Libros" type="GridContainer" parent="." unique_id=776403597]
+offset_left = 19.0
+offset_top = 198.0
+offset_right = 214.0
+offset_bottom = 613.0
+
+[node name="Area2D" type="Area2D" parent="Libros" unique_id=150416377]
+position = Vector2(92, 72)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Libros/Area2D" unique_id=2018045691]
+self_modulate = Color(0, 1, 0.049999952, 1)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("6_ruuom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/Area2D" unique_id=1296785996]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="Draggable" type="Node" parent="Libros/Area2D" unique_id=716312633]
+script = ExtResource("7_rfwn8")
+dragging_speed = 50.0
+type = SubResource("Resource_qerri")
+metadata/_custom_type_script = "uid://crmnw3ldr3xev"
+
+[node name="Area2D2" type="Area2D" parent="Libros" unique_id=1663357576]
+position = Vector2(92, 225)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Libros/Area2D2" unique_id=1169231534]
+self_modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("6_ruuom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/Area2D2" unique_id=109833772]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="Draggable" type="Node" parent="Libros/Area2D2" unique_id=1909330269]
+script = ExtResource("7_rfwn8")
+dragging_speed = 50.0
+type = SubResource("Resource_qerri")
+metadata/_custom_type_script = "uid://crmnw3ldr3xev"
