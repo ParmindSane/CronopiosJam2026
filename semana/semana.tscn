@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://cl76r8gam44x0"]
 
 [ext_resource type="Script" uid="uid://cjdw63irnjmyx" path="res://semana/semana.gd" id="1_frfks"]
+[ext_resource type="Texture2D" uid="uid://dk4fx0t5y1owf" path="res://clases/fondo1.jpeg" id="2_toyyl"]
 
 [node name="Semana" type="Node2D" unique_id=1507881581]
 script = ExtResource("1_frfks")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
+
+[node name="Fondo" type="TextureRect" parent="CanvasLayer" unique_id=853488876]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_toyyl")
+expand_mode = 1
+stretch_mode = 6
