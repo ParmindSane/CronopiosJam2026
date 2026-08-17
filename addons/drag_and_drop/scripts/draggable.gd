@@ -57,6 +57,8 @@ signal drag_started(area: Area2D)
 signal drag_ended(area: Area2D, drop_spot: SnappingSpot)
 signal state_changed(area: Area2D, state: DRAGGABLE_STATE)
 
+static var nowDragging = null
+
 #region Lifecycle
 
 func _ready():
@@ -83,7 +85,8 @@ func _ready():
 func _process(delta):
 	match state:
 		DRAGGABLE_STATE.IDLE:
-			pass
+			if nowDragging == self:
+				nowDragging = null
 		DRAGGABLE_STATE.DRAGGING:
 			_handle_dragging(delta)
 		DRAGGABLE_STATE.DROPPING:
@@ -145,8 +148,9 @@ func _on_input_event(_viewport, event, _shape_idx):
 		if relative_dragging:
 			drag_offset = a.global_position - event.position
 		
-		_change_state_to(DRAGGABLE_STATE.DRAGGING)
-		drag_started.emit(a)
+		if nowDragging == null:
+			_change_state_to(DRAGGABLE_STATE.DRAGGING)
+			drag_started.emit(a)
 
 func _input(event):
 	if event.is_action_released(drag_input_name) and state == DRAGGABLE_STATE.DRAGGING:
@@ -180,6 +184,9 @@ func move_to(pos: Vector2, reason := DRAGGABLE_STATE.AUTO_MOVING) -> void:
 func _change_state_to(new_state: DRAGGABLE_STATE) -> void:
 	if state == new_state:
 		return
+	
+	if new_state == DRAGGABLE_STATE.DRAGGING:
+		nowDragging = self
 	state = new_state
 	
 	match state:
