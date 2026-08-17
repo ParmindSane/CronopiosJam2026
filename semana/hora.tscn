@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dvinyfqq8jqa0"]
+
+[ext_resource type="Script" uid="uid://bhn1ey81a1rxh" path="res://semana/hora.gd" id="1_g1o7d"]
+[ext_resource type="Script" uid="uid://nj1hdjl1vob2" path="res://addons/drag_and_drop/scripts/drop_zone.gd" id="1_iedbb"]
+[ext_resource type="Script" uid="uid://b5wqxyc42r5u" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_reject.gd" id="2_g1o7d"]
+[ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="3_v0wbk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
+size = Vector2(113, 72)
+
+[sub_resource type="Resource" id="Resource_ruuom"]
+script = ExtResource("2_g1o7d")
+metadata/_custom_type_script = "uid://b5wqxyc42r5u"
+
+[sub_resource type="Resource" id="Resource_41cau"]
+script = ExtResource("3_v0wbk")
+id = "materia1"
+
+[sub_resource type="Resource" id="Resource_by6ar"]
+script = ExtResource("3_v0wbk")
+id = "materia2"
+metadata/_custom_type_script = "uid://djdmnemxrx7bg"
+
+[node name="Hora" type="Area2D" unique_id=175833315]
+script = ExtResource("1_g1o7d")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210275108]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="DropZone" type="Node2D" parent="." unique_id=216768803 node_paths=PackedStringArray("attach_spot")]
+script = ExtResource("1_iedbb")
+attach_spot = NodePath("..")
+drop_behavior = SubResource("Resource_ruuom")
+snap_style = 1
+accepted_draggable_types = Array[ExtResource("3_v0wbk")]([SubResource("Resource_41cau"), SubResource("Resource_by6ar")])
+metadata/_custom_type_script = "uid://nj1hdjl1vob2"
