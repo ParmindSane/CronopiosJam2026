@@ -1,4 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-addons/
+
+addons/dialogic
+
+addons/drag_and_drop/*
+!addons/drag_and_drop/scripts

@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://nj1hdjl1vob2" path="res://addons/drag_and_drop/scripts/drop_zone.gd" id="3_by6ar"]
 [ext_resource type="Script" uid="uid://b3yrcfpcbpfhu" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_replace.gd" id="4_jk0a6"]
 [ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="5_4ukv1"]
+[ext_resource type="PackedScene" uid="uid://4blu4rero4u0" path="res://semana/libro.tscn" id="6_by6ar"]
+[ext_resource type="Script" uid="uid://bub1nfmnk1re2" path="res://semana/libro_start.gd" id="6_j7k03"]
 [ext_resource type="Texture2D" uid="uid://b7tlt8h5dmtrs" path="res://semana/libro1.webp" id="6_ruuom"]
 [ext_resource type="Script" uid="uid://crmnw3ldr3xev" path="res://addons/drag_and_drop/scripts/draggable.gd" id="7_rfwn8"]
 
@@ -89,23 +91,25 @@ offset_top = 198.0
 offset_right = 214.0
 offset_bottom = 613.0
 
-[node name="Area2D" type="Area2D" parent="Libros" unique_id=150416377]
+[node name="Area2D" type="Area2D" parent="Libros" unique_id=1522384124]
 position = Vector2(92, 72)
-metadata/_edit_group_ = true
+script = ExtResource("6_j7k03")
+cantidad = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Libros/Area2D" unique_id=2018045691]
-self_modulate = Color(0, 1, 0.049999952, 1)
-scale = Vector2(0.53, 0.53)
-texture = ExtResource("6_ruuom")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/Area2D" unique_id=1296785996]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/Area2D" unique_id=495899196]
 shape = SubResource("RectangleShape2D_qe4n8")
 
-[node name="Draggable" type="Node" parent="Libros/Area2D" unique_id=716312633]
-script = ExtResource("7_rfwn8")
-dragging_speed = 50.0
-type = SubResource("Resource_qerri")
-metadata/_custom_type_script = "uid://crmnw3ldr3xev"
+[node name="DropZone" type="Node2D" parent="Libros/Area2D" unique_id=330744271 node_paths=PackedStringArray("attach_spot")]
+script = ExtResource("3_by6ar")
+attach_spot = NodePath("..")
+drop_behavior = SubResource("Resource_jk0a6")
+snap_style = 1
+accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_41cau")])
+metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[node name="Libro" parent="Libros/Area2D" unique_id=170571200 instance=ExtResource("6_by6ar")]
+position = Vector2(17, 178)
+color = Color(0, 1, 0.050980393, 1)
 
 [node name="Area2D2" type="Area2D" parent="Libros" unique_id=1663357576]
 position = Vector2(92, 225)

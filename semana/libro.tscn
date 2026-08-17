@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://4blu4rero4u0"]
+
+[ext_resource type="Script" uid="uid://r3yvhndvyxjs" path="res://semana/libro.gd" id="1_6pxll"]
+[ext_resource type="Texture2D" uid="uid://b7tlt8h5dmtrs" path="res://semana/libro1.webp" id="1_iykxl"]
+[ext_resource type="Script" uid="uid://crmnw3ldr3xev" path="res://addons/drag_and_drop/scripts/draggable.gd" id="2_6pxll"]
+[ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="3_2rtx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
+size = Vector2(113, 72)
+
+[sub_resource type="Resource" id="Resource_qerri"]
+script = ExtResource("3_2rtx1")
+id = "libro"
+
+[node name="Libro" type="Area2D" unique_id=170571200]
+script = ExtResource("1_6pxll")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=84374299]
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("1_iykxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=602618241]
+shape = SubResource("RectangleShape2D_qe4n8")
+
+[node name="Draggable" type="Node" parent="." unique_id=156883825]
+script = ExtResource("2_6pxll")
+dragging_speed = 50.0
+type = SubResource("Resource_qerri")
+metadata/_custom_type_script = "uid://crmnw3ldr3xev"
