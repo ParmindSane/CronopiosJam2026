@@ -30,3 +30,5 @@ drop_behavior = SubResource("Resource_ruuom")
 snap_style = 1
 accepted_draggable_types = Array[ExtResource("3_v0wbk")]([SubResource("Resource_41cau")])
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[connection signal="occupant_changed" from="DropZone" to="." method="_on_drop_zone_occupant_changed"]

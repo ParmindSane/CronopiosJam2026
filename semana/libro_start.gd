@@ -20,9 +20,7 @@ func addLibro():
 		libroNuevo.setMateria(materia)
 	
 
-func _on_drop_zone_occupant_changed(zone, spot, old_occupant, new_occupant):
-	if new_occupant != null:
-		if new_occupant.materia == materia:
-			new_occupant.queue_free()
+func _on_drop_zone_drop_applied(zone, area, plan):
+	if area.materia == materia:
+			area.queue_free()
 			addLibro()
-	
