@@ -14,12 +14,7 @@ metadata/_custom_type_script = "uid://b5wqxyc42r5u"
 
 [sub_resource type="Resource" id="Resource_41cau"]
 script = ExtResource("3_v0wbk")
-id = "materia1"
-
-[sub_resource type="Resource" id="Resource_by6ar"]
-script = ExtResource("3_v0wbk")
-id = "materia2"
-metadata/_custom_type_script = "uid://djdmnemxrx7bg"
+id = "libro"
 
 [node name="Hora" type="Area2D" unique_id=175833315]
 script = ExtResource("1_g1o7d")
@@ -33,5 +28,5 @@ script = ExtResource("1_iedbb")
 attach_spot = NodePath("..")
 drop_behavior = SubResource("Resource_ruuom")
 snap_style = 1
-accepted_draggable_types = Array[ExtResource("3_v0wbk")]([SubResource("Resource_41cau"), SubResource("Resource_by6ar")])
+accepted_draggable_types = Array[ExtResource("3_v0wbk")]([SubResource("Resource_41cau")])
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"

@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://b3yrcfpcbpfhu" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_replace.gd" id="7_by6ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
-size = Vector2(113, 72)
+size = Vector2(144, 369)
 
 [sub_resource type="Resource" id="Resource_f160x"]
 script = ExtResource("7_by6ar")
@@ -18,21 +18,7 @@ metadata/_custom_type_script = "uid://b3yrcfpcbpfhu"
 
 [sub_resource type="Resource" id="Resource_41cau"]
 script = ExtResource("5_4ukv1")
-id = "materia1"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7k03"]
-size = Vector2(113, 72)
-
-[sub_resource type="Resource" id="Resource_j7k03"]
-script = ExtResource("5_4ukv1")
-id = "materia2"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ukv1"]
-size = Vector2(113, 72)
-
-[sub_resource type="Resource" id="Resource_4ukv1"]
-script = ExtResource("5_4ukv1")
-id = "materia3"
+id = "libro"
 
 [node name="Semana" type="Node2D" unique_id=1507881581]
 script = ExtResource("1_frfks")
@@ -59,15 +45,15 @@ position = Vector2(1054.9999, 121.99999)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_4ukv1")
 
-[node name="Calendario" type="GridContainer" parent="." unique_id=2062506544]
+[node name="Calendario" type="HBoxContainer" parent="." unique_id=332263115]
 offset_left = 287.0
 offset_top = 217.0
 offset_right = 1088.0
 offset_bottom = 596.0
-columns = 7
 
 [node name="Lunes" type="VBoxContainer" parent="Calendario" unique_id=159460927]
 layout_mode = 2
+metadata/_edit_group_ = true
 
 [node name="Hora" parent="Calendario/Lunes" unique_id=175833315 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 37)
@@ -80,25 +66,35 @@ clase = 2
 [node name="Hora3" parent="Calendario/Lunes" unique_id=27018559 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 189)
 
-[node name="Libros" type="GridContainer" parent="." unique_id=776403597]
-offset_left = 19.0
-offset_top = 198.0
-offset_right = 214.0
-offset_bottom = 613.0
+[node name="Hora4" parent="Calendario/Lunes" unique_id=512614604 instance=ExtResource("3_j7k03")]
+position = Vector2(57, 268)
 
-[node name="LibroStart" type="Area2D" parent="Libros" unique_id=1522384124 node_paths=PackedStringArray("dropzone")]
-self_modulate = Color(0.01666665, 1, 0, 1)
-position = Vector2(92, 72)
-script = ExtResource("6_j7k03")
-materia = 1
-cantidadTotal = 5
-dropzone = NodePath("DropZone1")
+[node name="Martes" type="VBoxContainer" parent="Calendario" unique_id=535155243]
+layout_mode = 2
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/LibroStart" unique_id=495899196]
+[node name="Hora" parent="Calendario/Martes" unique_id=1696262495 instance=ExtResource("3_j7k03")]
+position = Vector2(57, 37)
+clase = 3
+
+[node name="Hora2" parent="Calendario/Martes" unique_id=1481690046 instance=ExtResource("3_j7k03")]
+position = Vector2(57, 113)
+clase = 1
+
+[node name="Hora3" parent="Calendario/Martes" unique_id=651016219 instance=ExtResource("3_j7k03")]
+position = Vector2(57, 189)
+
+[node name="Hora4" parent="Calendario/Martes" unique_id=1490345976 instance=ExtResource("3_j7k03")]
+position = Vector2(57, 268)
+
+[node name="Libros" type="Area2D" parent="." unique_id=1522384124]
+self_modulate = Color(0.01666665, 1, 0, 1)
+position = Vector2(111, 406)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros" unique_id=495899196]
 shape = SubResource("RectangleShape2D_qe4n8")
 
-[node name="DropZone1" type="Node2D" parent="Libros/LibroStart" unique_id=330744271 node_paths=PackedStringArray("attach_spot")]
+[node name="DropZone" type="Node2D" parent="Libros" unique_id=330744271 node_paths=PackedStringArray("attach_spot")]
 script = ExtResource("3_by6ar")
 attach_spot = NodePath("..")
 drop_behavior = SubResource("Resource_f160x")
@@ -106,47 +102,16 @@ snap_style = 1
 accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_41cau")])
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
 
-[node name="LibroStart2" type="Area2D" parent="Libros" unique_id=321070291 node_paths=PackedStringArray("dropzone")]
-position = Vector2(92, 230)
+[node name="Libros1" type="Node2D" parent="Libros" unique_id=1643653101]
+position = Vector2(0, -134)
 script = ExtResource("6_j7k03")
+cantidadTotal = 3
+materia = 1
+
+[node name="Libros2" type="Node2D" parent="Libros" unique_id=1554100820]
+script = ExtResource("6_j7k03")
+cantidadTotal = 5
 materia = 2
-cantidadTotal = 3
-dropzone = NodePath("DropZone2")
-metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/LibroStart2" unique_id=1439043739]
-shape = SubResource("RectangleShape2D_j7k03")
-
-[node name="DropZone2" type="Node2D" parent="Libros/LibroStart2" unique_id=1984362351 node_paths=PackedStringArray("attach_spot")]
-script = ExtResource("3_by6ar")
-attach_spot = NodePath("..")
-drop_behavior = SubResource("Resource_f160x")
-snap_style = 1
-accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_j7k03")])
-metadata/_custom_type_script = "uid://nj1hdjl1vob2"
-
-[node name="LibroStart3" type="Area2D" parent="Libros" unique_id=181789601 node_paths=PackedStringArray("dropzone")]
-position = Vector2(92, 350)
-script = ExtResource("6_j7k03")
-materia = 3
-cantidadTotal = 3
-dropzone = NodePath("DropZone3")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Libros/LibroStart3" unique_id=822351654]
-shape = SubResource("RectangleShape2D_4ukv1")
-
-[node name="DropZone3" type="Node2D" parent="Libros/LibroStart3" unique_id=1868260149 node_paths=PackedStringArray("attach_spot")]
-script = ExtResource("3_by6ar")
-attach_spot = NodePath("..")
-drop_behavior = SubResource("Resource_f160x")
-snap_style = 1
-accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_4ukv1")])
-metadata/_custom_type_script = "uid://nj1hdjl1vob2"
-
-[connection signal="mouse_entered" from="Libros/LibroStart" to="Libros/LibroStart" method="_on_mouse_entered"]
-[connection signal="occupant_changed" from="Libros/LibroStart/DropZone1" to="Libros/LibroStart" method="_on_drop_zone_occupant_changed"]
-[connection signal="mouse_entered" from="Libros/LibroStart2" to="Libros/LibroStart2" method="_on_mouse_entered"]
-[connection signal="occupant_changed" from="Libros/LibroStart2/DropZone2" to="Libros/LibroStart2" method="_on_drop_zone_occupant_changed"]
-[connection signal="mouse_entered" from="Libros/LibroStart3" to="Libros/LibroStart3" method="_on_mouse_entered"]
-[connection signal="occupant_changed" from="Libros/LibroStart3/DropZone3" to="Libros/LibroStart3" method="_on_drop_zone_occupant_changed"]
+[connection signal="occupant_changed" from="Libros/DropZone" to="Libros/Libros1" method="_on_drop_zone_occupant_changed"]
+[connection signal="occupant_changed" from="Libros/DropZone" to="Libros/Libros2" method="_on_drop_zone_occupant_changed"]
