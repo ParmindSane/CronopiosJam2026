@@ -62,11 +62,10 @@ clase = 2
 
 [node name="Hora2" parent="Calendario/Lunes" unique_id=1952701215 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 114)
-clase = 2
+clase = 1
 
 [node name="Hora3" parent="Calendario/Lunes" unique_id=826784066 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 189)
-clase = 2
 
 [node name="Lunes2" type="VBoxContainer" parent="Calendario" unique_id=189600377]
 layout_mode = 2
@@ -74,7 +73,7 @@ size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario/Lunes2" unique_id=876907168 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 37)
-clase = 2
+clase = 3
 
 [node name="Hora2" parent="Calendario/Lunes2" unique_id=1032912229 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 114)
@@ -82,7 +81,6 @@ clase = 2
 
 [node name="Hora3" parent="Calendario/Lunes2" unique_id=1588064985 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 189)
-clase = 2
 
 [node name="Libros" type="Area2D" parent="." unique_id=1522384124]
 self_modulate = Color(0.01666665, 1, 0, 1)

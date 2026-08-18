@@ -14,13 +14,10 @@ func cambiarFaltas(cambio: float):
 	
 
 func _on_hora_estudiando(materia, clase, estudiada):
-	print(str(materia) + " " + str(clase) + " " + str(estudiada))
-	
-
-
+	estudiando(materia, clase, estudiada)
 func _on_hora_2_estudiando(materia, clase, estudiada):
-	pass # Replace with function body.
-
-
+	estudiando(materia, clase, estudiada)
 func _on_hora_3_estudiando(materia, clase, estudiada):
-	pass # Replace with function body.
+	estudiando(materia, clase, estudiada)
+func estudiando(materia, clase, estudiada):
+	print(str(materia) + " " + str(clase) + " " + str(estudiada))
