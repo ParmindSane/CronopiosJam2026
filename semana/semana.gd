@@ -4,12 +4,21 @@ extends Node2D
 var faltas: float
 var faltasCartel: Label
 
-var horasDeEstudio: Array
+var clasesSalteadas = [false, false, false, false, false]
+var currentClase: int
+var currentMateria: int
 
 func _ready():
 	faltas = faltasStart
 	faltasCartel = $Faltas
 	cambiarFaltas(0)
+	
+	#clases[0] = 
+	#materias[0] = 0
+	#clases[1] = 
+	
+	currentClase = -1
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 
 func cambiarFaltas(cambio: int):
@@ -28,6 +37,32 @@ func estudiando(materia, clase, estudiada):
 	
 	if clase >= 0:
 		cambiarFaltas(-estudiada)
+		clasesSalteadas[clase] = estudiada > 0
+		
+		if(clasesSalteadas[clase]):
+			print("Falto a " + str(clase))
+	print(clasesSalteadas)
+	
 
 func _on_terminar_pressed():
-	pass # Replace with function body.
+	if Dialogic.current_timeline == null:
+		Dialogic.start("res://clases/Clases.dtl")
+	
+
+func _on_dialogic_signal(argument:String):
+	print(str(argument) + " " + str(currentClase))
+	
+	if argument == "finClase":
+		for i in range(currentClase, clasesSalteadas.size()):
+			currentClase += 1
+			if currentClase < clasesSalteadas.size():
+				if clasesSalteadas[currentClase] == false:
+					break
+			else:
+				break
+			
+		Dialogic.VAR.nextClase = currentClase
+		
+		if currentClase >= clasesSalteadas.size():
+			currentClase = -1
+	

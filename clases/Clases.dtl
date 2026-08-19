@@ -1,0 +1,15 @@
+if {nextClase} == 0.0:
+	[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
+	join Fernando center
+	Fernando: Dato de vital importancia (?
+	leave Fernando
+if {nextClase}   ==   1.0:
+	[background arg="res://clases/fondo1.jpeg" fade="0.0"]
+	join Solana center
+	Solana: Dato de vital importancia 2\: la venganza
+	leave Solana
+[signal arg="finClase"]
+if {nextClase} < 5.0:
+	jump 
+else:
+	[end_timeline]
