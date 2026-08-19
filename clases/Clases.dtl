@@ -1,7 +1,5 @@
 if {examen} == true:
-	set {badEnding} = true
-else:
-	set {badEnding} = false
+	set {respuestaCorrecta} = false
 if {nextClase} == 0.0:
 	[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
 	join Fernando center
@@ -20,8 +18,11 @@ if {nextClase}   ==   1.0:
 			Solana: Vieja tu vieja
 		- Ya fue todo
 			Solana: Bueno ta bien
-			set {badEnding} = false
+			set {respuestaCorrecta} = true
 	leave Solana
+if {examen} == true:
+	if {respuestaCorrecta} == false:
+		set {goodEnding} = false
 [signal arg="finClase"]
 if {nextClase} < 5.0:
 	jump 

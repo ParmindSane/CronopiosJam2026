@@ -87,10 +87,11 @@ func _on_dialogic_signal(argument:String):
 		if currentClase >= clasesSalteadas.size():
 			currentClase = -1
 			currentSemana += 1
+			print(Dialogic.VAR.goodEnding)
 		
 		if currentSemana >= 4:
-			if Dialogic.VAR.badEnding:
-				get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
-			else:
+			if Dialogic.VAR.goodEnding:
 				get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
+			else:
+				get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
 	

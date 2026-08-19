@@ -66,9 +66,10 @@ audio/channel_defaults={
 }
 glossary/default_case_sensitive=true
 variables={
-"badEnding": true,
 "examen": false,
-"nextClase": -1
+"goodEnding": true,
+"nextClase": -1,
+"respuestaCorrecta": false
 }
 
 [display]
