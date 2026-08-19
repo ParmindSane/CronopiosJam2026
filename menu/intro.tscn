@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://iqar5ifwujnn"]
+
+[ext_resource type="Texture2D" uid="uid://bcnir3ps3hrr3" path="res://menu/intro1.png" id="1_ia3hl"]
+[ext_resource type="Script" uid="uid://y7qv2l5yn4o8" path="res://menu/intro.gd" id="1_ou8eh"]
+[ext_resource type="Texture2D" uid="uid://bcimyy7t1wame" path="res://menu/intro2.png" id="2_ou8eh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qe4n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ia3hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ou8eh")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Intro" type="Control" unique_id=1689057608]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ou8eh")
+
+[node name="Control" type="Control" parent="." unique_id=1475849567]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=1838334492]
+position = Vector2(-7.6293945e-06, 3.8146973e-06)
+scale = Vector2(1.4496645, 1.4496645)
+sprite_frames = SubResource("SpriteFrames_qe4n8")
+autoplay = "default"
+
+[connection signal="animation_finished" from="Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
