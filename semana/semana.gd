@@ -8,7 +8,11 @@ var clasesSalteadas = [false, false, false, false, false]
 var currentClase: int
 var currentMateria: int
 
+var irClaseButton: Button
+
 func _ready():
+	irClaseButton = $Terminar
+	
 	faltas = faltasStart
 	faltasCartel = $Faltas
 	cambiarFaltas(0)
@@ -23,7 +27,13 @@ func _ready():
 
 func cambiarFaltas(cambio: int):
 	faltas += cambio
-	faltasCartel.text = "Quedan " + str(int(faltas)) + " faltas"
+	if faltas >= 0:
+		faltasCartel.label_settings.font_color = Color(1.0, 1.0, 1.0, 1.0)
+		irClaseButton.disabled = false
+		faltasCartel.text = "Quedan " + str(int(faltas)) + " faltas"
+	else:
+		faltasCartel.label_settings.font_color = Color(1,0,0)
+		irClaseButton.disabled = true
 	
 
 func _on_hora_estudiando(materia, clase, estudiada):

@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://bub1nfmnk1re2" path="res://semana/libro_start.gd" id="6_j7k03"]
 [ext_resource type="Script" uid="uid://b3yrcfpcbpfhu" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_replace.gd" id="7_by6ar"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_jk0a6"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(144, 369)
 
@@ -21,7 +23,7 @@ id = "libro"
 
 [node name="Semana" type="Node2D" unique_id=212412604]
 script = ExtResource("1_frfks")
-faltasStart = 5
+faltasStart = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
 layer = -1
@@ -42,6 +44,7 @@ offset_top = 163.0
 offset_right = 1087.0
 offset_bottom = 203.0
 text = "Quedan X faltas"
+label_settings = SubResource("LabelSettings_jk0a6")
 horizontal_alignment = 2
 vertical_alignment = 1
 
