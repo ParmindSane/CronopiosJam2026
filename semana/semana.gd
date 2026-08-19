@@ -4,22 +4,33 @@ extends Node2D
 var faltas: float
 var faltasCartel: Label
 
-var clasesSalteadas = [false, false, false, false, false]
+var clasesSalteadas: Array
+var examenes: Array
 var currentClase: int
 var currentMateria: int
+var currentSemana: int
 
 var irClaseButton: Button
 
 func _ready():
+	currentSemana = 0
+	
+	for i in range(5):
+		clasesSalteadas.push_back(false)
+	
+	for i in range(4):
+		var nuevaSemana = []
+		for j in range(5):
+			nuevaSemana.push_back(false)
+		examenes.push_back(nuevaSemana)
+	examenes[0][1] = true
+	print(examenes)
+	
 	irClaseButton = $Terminar
 	
 	faltas = faltasStart
 	faltasCartel = $Faltas
 	cambiarFaltas(0)
-	
-	#clases[0] = 
-	#materias[0] = 0
-	#clases[1] = 
 	
 	currentClase = -1
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -39,8 +50,6 @@ func cambiarFaltas(cambio: int):
 func _on_hora_estudiando(materia, clase, estudiada):
 	estudiando(materia, clase, estudiada)
 func _on_hora_2_estudiando(materia, clase, estudiada):
-	estudiando(materia, clase, estudiada)
-func _on_hora_3_estudiando(materia, clase, estudiada):
 	estudiando(materia, clase, estudiada)
 func estudiando(materia, clase, estudiada):
 	print(str(materia) + " " + str(clase) + " " + str(estudiada))
@@ -66,6 +75,8 @@ func _on_dialogic_signal(argument:String):
 		for i in range(currentClase, clasesSalteadas.size()):
 			currentClase += 1
 			if currentClase < clasesSalteadas.size():
+				Dialogic.VAR.examen = examenes[currentSemana][currentClase]
+				
 				if clasesSalteadas[currentClase] == false:
 					break
 			else:
@@ -75,4 +86,11 @@ func _on_dialogic_signal(argument:String):
 		
 		if currentClase >= clasesSalteadas.size():
 			currentClase = -1
+			currentSemana += 1
+		
+		if currentSemana >= 4:
+			if Dialogic.VAR.badEnding:
+				get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
+			else:
+				get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
 	

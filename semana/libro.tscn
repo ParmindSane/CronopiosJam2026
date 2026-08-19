@@ -24,7 +24,7 @@ texture = SubResource("CompressedTexture2D_iykxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=602618241]
 shape = SubResource("RectangleShape2D_qe4n8")
-debug_color = Color(0.7372139, 0.46898526, 5.7756904e-07, 0.41960785)
+debug_color = Color(0.74, 0.46866667, 0, 0)
 
 [node name="Draggable" type="Node" parent="." unique_id=156883825]
 script = ExtResource("2_6pxll")

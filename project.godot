@@ -66,6 +66,7 @@ audio/channel_defaults={
 }
 glossary/default_case_sensitive=true
 variables={
+"badEnding": true,
 "examen": false,
 "nextClase": -1
 }
@@ -80,6 +81,7 @@ window/stretch/aspect="expand"
 [editor]
 
 movie_writer/movie_file="E:/OBS/Grabaciones/CronopiosJamTest.avi"
+movie_writer/fps=30
 
 [editor_plugins]
 

@@ -1,3 +1,7 @@
+if {examen} == true:
+	set {badEnding} = true
+else:
+	set {badEnding} = false
 if {nextClase} == 0.0:
 	[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
 	join Fernando center
@@ -6,7 +10,17 @@ if {nextClase} == 0.0:
 if {nextClase}   ==   1.0:
 	[background arg="res://clases/fondo1.jpeg" fade="0.0"]
 	join Solana center
-	Solana: Dato de vital importancia 2\: la venganza
+	if {examen} == false:
+		Solana: Dato de vital importancia 2\: la venganza
+	else:
+		Solana: Nos vimo en diciembre
+		- No joda profe
+			Solana: Hubieras estudiadio
+		- Diciembre tu vieja
+			Solana: Vieja tu vieja
+		- Ya fue todo
+			Solana: Bueno ta bien
+			set {badEnding} = false
 	leave Solana
 [signal arg="finClase"]
 if {nextClase} < 5.0:
