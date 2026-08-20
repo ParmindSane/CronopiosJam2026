@@ -23,7 +23,10 @@ Global="*uid://gmtfi2172hmn"
 [dialogic]
 
 directories/dch_directory={
+"Alejo": "res://clases/Pasillos/Alejo.dch",
+"Angelica": "res://clases/3_Angelica/Angelica.dch",
 "Fernando": "res://clases/0_Fernando/Fernando.dch",
+"Roberto": "res://clases/2_Roberto/Roberto.dch",
 "Solana": "res://clases/1_Solana/Solana.dch"
 }
 directories/dtl_directory={

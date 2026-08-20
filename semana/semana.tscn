@@ -74,8 +74,6 @@ size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario/Martes" unique_id=876907168 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 37)
-monitoring = false
-monitorable = false
 clase = 1
 id = 2
 
@@ -83,17 +81,22 @@ id = 2
 position = Vector2(57, 114)
 clase = -1
 
-[node name="Label" type="Label" parent="Calendario/Martes" unique_id=1444246076]
-layout_mode = 2
-text = "EXAMEN"
-
 [node name="Miercoles" type="VBoxContainer" parent="Calendario" unique_id=1946791122]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario/Miercoles" unique_id=1299513647 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 37)
+monitoring = false
+monitorable = false
 clase = 2
+
+[node name="Label" type="Label" parent="Calendario/Miercoles/Hora" unique_id=1444246076]
+offset_left = -57.0
+offset_top = -37.0
+offset_right = 54.0
+offset_bottom = -14.0
+text = "EXAMEN"
 
 [node name="Hora2" parent="Calendario/Miercoles" unique_id=446372523 instance=ExtResource("3_j7k03")]
 position = Vector2(57, 114)

@@ -8,10 +8,10 @@ var clasesSalteadas: String
 var currentSemana: int
 
 const examenes = [2, 0, 4, 1]
-var examenesId: Array
+var examenesId: Array[int]
 
 var fullEstudiados: String
-var estudiados: Array
+var estudiados: Array[int]
 const librosTotales = [8, 19, 3, 0, 14]
 
 var irClaseButton: Button
@@ -28,6 +28,9 @@ func _ready():
 	for clase in examenes:
 		var i = examenes.find(clase)
 		examenesId.push_back(clase*2 + 14*i)
+	
+	for i in range(5):
+		estudiados.push_back(0)
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
@@ -50,7 +53,7 @@ func _on_hora_estudiando(materia, clase, colocado, id):
 func _on_hora_2_estudiando(materia, clase, colocado, id):
 	estudiando(materia, clase, colocado, id)
 func estudiando(materia, clase, colocado, id):
-	print("Saqué " if !colocado else "Estudié " + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
+	print(("Saqué " if !colocado else "Estudié ") + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
 	
 	if clase >= 0:
 		cambiarFaltas(colocado)
@@ -59,8 +62,8 @@ func estudiando(materia, clase, colocado, id):
 		else:
 			clasesSalteadas.replace(str(clase), "")
 		
-		print("Falto" if colocado else "Asisto" + " a " + str(clase))
-	print(clasesSalteadas)
+		print(("Falto" if colocado else "Asisto") + " a " + str(clase))
+	print("Faltando a " + str(clasesSalteadas))
 	
 	var i = examenes.find(materia)
 	if id < examenesId[i]:
@@ -68,16 +71,18 @@ func estudiando(materia, clase, colocado, id):
 			estudiados[materia] += 1
 		else:
 			estudiados[materia] -= 1
+	if estudiados[materia] > librosTotales[materia]:
+		fullEstudiados += str(materia)
+	else:
+		fullEstudiados.replace(str(materia), "")
+	print("Vengo estudiando " + str(estudiados))
+	print("Terminé de estudiar " + fullEstudiados)
 	
 
 func _on_terminar_pressed():
-	var currentExamen = examenes[currentSemana]
-	
 	Dialogic.VAR.ausentes = clasesSalteadas
-	Dialogic.VAR.examen = currentExamen
-	
-	if estudiados[currentExamen] >= librosTotales[currentExamen]:
-		Dialogic.VAR.llegaBien = true
+	Dialogic.VAR.examen = examenes[currentSemana]
+	Dialogic.VAR.llegaBien = fullEstudiados
 	
 	if Dialogic.current_timeline == null:
 		Dialogic.start("res://clases/Clases.dtl")
