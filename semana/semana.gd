@@ -6,6 +6,7 @@ var faltasCartel: Label
 
 var clasesSalteadas: String
 var currentSemana: int
+@export var semanas: Array[HBoxContainer]
 
 const examenes = [2, 0, 4, 1]
 var examenesId: Array[int]
@@ -18,12 +19,13 @@ var irClaseButton: Button
 
 func _ready():
 	currentSemana = 0
+	mostrarCalendarios(currentSemana)
 	
 	irClaseButton = $Terminar
 	
-	faltas = faltasStart
+	faltas = faltasStart + 1
 	faltasCartel = $Faltas
-	cambiarFaltas(0)
+	cambiarFaltas(true)
 	
 	for clase in examenes:
 		var i = examenes.find(clase)
@@ -35,10 +37,16 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 
+func mostrarCalendarios(i: int):
+	for s in semanas:
+		s.visible = semanas.find(s) == i
+
 func cambiarFaltas(estudio: bool):
-	var cambio = +1 if estudio else -1
-	
-	faltas += cambio
+	if !estudio:
+		faltas += 1
+	else:
+		faltas -= 1
+
 	if faltas >= 0:
 		faltasCartel.label_settings.font_color = Color(1.0, 1.0, 1.0, 1.0)
 		irClaseButton.disabled = false
@@ -53,6 +61,7 @@ func _on_hora_estudiando(materia, clase, colocado, id):
 func _on_hora_2_estudiando(materia, clase, colocado, id):
 	estudiando(materia, clase, colocado, id)
 func estudiando(materia, clase, colocado, id):
+	print("-------------------------------")
 	print(("Saqué " if !colocado else "Estudié ") + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
 	
 	if clase >= 0:
@@ -72,7 +81,8 @@ func estudiando(materia, clase, colocado, id):
 		else:
 			estudiados[materia] -= 1
 	if estudiados[materia] >= librosTotales[materia]:
-		fullEstudiados += str(materia)
+		if ! str(materia) in fullEstudiados:
+			fullEstudiados += str(materia)
 	else:
 		fullEstudiados = fullEstudiados.replace(str(materia), "")
 	
@@ -100,4 +110,6 @@ func _on_dialogic_signal(argument:String):
 				get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
 			else:
 				get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
+		else:
+			mostrarCalendarios(currentSemana)
 	

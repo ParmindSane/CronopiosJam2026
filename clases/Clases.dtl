@@ -1,68 +1,82 @@
 set {buenChamullo} = false
 # --------------------------------------------------FERNANDO
-[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
-join Fernando center
-if {examen} != 0.0:
-	if !"0" in {ausentes}:
+if !"0" in {ausentes}:
+	[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
+	join Fernando center
+	if {examen} != 0.0:
 		Fernando: Hola y chau
-else:
-	if "0" in {llegaBien}:
-		Fernando: Ya aprobaste, andate
 	else:
-		Fernando: I am insobornable
+		if "0" in {llegaBien}:
+			Fernando: Ya aprobaste bro
+		else:
+			Fernando: La que has liado, chaval
+			- ¿Por qué sos español?
+				Fernando: Porque me mola desaprobar pringados
+			- Venga, tío, ayúdame
+				set {buenChamullo} = true
+				Fernando: Vale, vale
+leave --All--
 # --------------------------------------------------SOLANA
-[background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
-join Solana center
-if {examen} != 1.0:
-	if !"1" in {ausentes}:
+if !"1" in {ausentes}:
+	[background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
+	join Solana center
+	if {examen} != 1.0:
 		Solana: Holis UwU
-else:
-	if "1" in {llegaBien}:
-		Solana: Aprobaste \:D
 	else:
-		Solana: Nos vimo en diciembre
-		- Diciembre tu vieja
-			Solana: Vieja tu vieja
-		- Subime la nota porfa
-			set {buenChamullo} = true
-			Solana: Bueno dale
+		if "1" in {llegaBien}:
+			Solana: Aprobaste \:D
+		else:
+			Solana: Nos vimo en diciembre
+			- Diciembre tu vieja
+				Solana: Vieja tu vieja
+			- Subime la nota porfa
+				set {buenChamullo} = true
+				Solana: Bueno dale
+leave --All--
 # --------------------------------------------------ROBERTO
-[background arg="res://clases/fondo2.jpeg" fade="1.0" transition="Push Left" wait="true"]
-join Roberto center
-if {examen} != 2.0:
-	if !"2" in {ausentes}:
+if !"2" in {ausentes}:
+	[background arg="res://clases/fondo2.jpeg" fade="1.0" transition="Push Left" wait="true"]
+	join Roberto center
+	if {examen} != 2.0:
 		Roberto: Hello there!
-else:
-	if "2" in {llegaBien}:
-		Roberto: Aprubed
 	else:
-		Roberto: You desaprobated
-		- La buena
-			set {buenChamullo} = true
-			Roberto: Ok I ayudar you
-		- La mala
-			Roberto: Fuck off
+		if "2" in {llegaBien}:
+			Roberto: Aprubed
+		else:
+			Roberto: You desaprobated
+			- fak iu
+				Roberto: joli shit
+			- Jelp mi
+				set {buenChamullo} = true
+				Roberto: Ok I ayudar you
+leave --All--
 # --------------------------------------------------PASILLO
 [background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
 join Alejo center
 Alejo: Yo ni imagen tengo we
+leave --All--
 # --------------------------------------------------ANGELICA
-[background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
-join Angelica center
-if {examen} != 4.0:
-	if !"4" in {ausentes}:
+if !"4" in {ausentes}:
+	[background arg="res://clases/fondo2.jpeg" fade="1.0" transition="Push Left" wait="true"]
+	join Angelica center
+	if {examen} != 4.0:
 		Angelica: K px
-else:
-	if "4" in {llegaBien}:
-		Angelica: todo ok
 	else:
-		Angelica: F
-		- F?
+		if "4" in {llegaBien}:
+			Angelica: todo ok
+		else:
 			Angelica: F
-		- G
-			set {buenChamullo} = true
-			Angelica: H
+			- F?
+				Angelica: F
+			- G
+				set {buenChamullo} = true
+				Angelica: H
+leave --All--
 # --------------------------------------------------ENDING
 if {buenChamullo} == false:
 	set {goodEnding} = false
+if {goodEnding} == true:
+	# goodEnding
+else:
+	# badEnding
 [signal arg="finde"]
