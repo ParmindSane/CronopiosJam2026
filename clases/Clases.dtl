@@ -1,0 +1,30 @@
+if {examen} == true:
+	set {respuestaCorrecta} = false
+if {nextClase} == 0.0:
+	[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
+	join Fernando center
+	Fernando: Dato de vital importancia (?
+	leave Fernando
+if {nextClase}   ==   1.0:
+	[background arg="res://clases/fondo1.jpeg" fade="0.0"]
+	join Solana center
+	if {examen} == false:
+		Solana: Dato de vital importancia 2\: la venganza
+	else:
+		Solana: Nos vimo en diciembre
+		- No joda profe
+			Solana: Hubieras estudiadio
+		- Diciembre tu vieja
+			Solana: Vieja tu vieja
+		- Ya fue todo
+			Solana: Bueno ta bien
+			set {respuestaCorrecta} = true
+	leave Solana
+if {examen} == true:
+	if {respuestaCorrecta} == false:
+		set {goodEnding} = false
+[signal arg="finClase"]
+if {nextClase} < 5.0:
+	jump 
+else:
+	[end_timeline]

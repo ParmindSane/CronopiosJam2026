@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://jpiw3n4ypr6e"]
+
+[ext_resource type="Script" uid="uid://bo3t8ll787cuj" path="res://menu/menu.gd" id="1_j0t7f"]
+
+[node name="Menu" type="Node2D" unique_id=798799425]
+script = ExtResource("1_j0t7f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=776222613]
+layer = -1
+
+[node name="Fondo" type="TextureRect" parent="CanvasLayer" unique_id=1537126652]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=769019311]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Jugar" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1732747861]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+text = "JUGAR"
+
+[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1095470237]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+text = "SALIR"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
