@@ -66,10 +66,11 @@ audio/channel_defaults={
 }
 glossary/default_case_sensitive=true
 variables={
-"examen": false,
+"ausentes": "012",
+"buenChamullo": false,
+"examen": 1,
 "goodEnding": true,
-"nextClase": -1,
-"respuestaCorrecta": false
+"llegaBien": "0"
 }
 
 [display]

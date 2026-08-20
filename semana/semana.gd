@@ -4,27 +4,20 @@ extends Node2D
 var faltas: float
 var faltasCartel: Label
 
-var clasesSalteadas: Array
-var examenes: Array
-var currentClase: int
-var currentMateria: int
+var clasesSalteadas: String
 var currentSemana: int
+
+const examenes = [2, 0, 4, 1]
+var examenesId: Array
+
+var fullEstudiados: String
+var estudiados: Array
+const librosTotales = [8, 19, 3, 0, 14]
 
 var irClaseButton: Button
 
 func _ready():
 	currentSemana = 0
-	
-	for i in range(5):
-		clasesSalteadas.push_back(false)
-	
-	for i in range(4):
-		var nuevaSemana = []
-		for j in range(5):
-			nuevaSemana.push_back(false)
-		examenes.push_back(nuevaSemana)
-	examenes[0][1] = true
-	print(examenes)
 	
 	irClaseButton = $Terminar
 	
@@ -32,11 +25,16 @@ func _ready():
 	faltasCartel = $Faltas
 	cambiarFaltas(0)
 	
-	currentClase = -1
+	for clase in examenes:
+		var i = examenes.find(clase)
+		examenesId.push_back(clase*2 + 14*i)
+	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 
-func cambiarFaltas(cambio: int):
+func cambiarFaltas(estudio: bool):
+	var cambio = +1 if estudio else -1
+	
 	faltas += cambio
 	if faltas >= 0:
 		faltasCartel.label_settings.font_color = Color(1.0, 1.0, 1.0, 1.0)
@@ -47,47 +45,48 @@ func cambiarFaltas(cambio: int):
 		irClaseButton.disabled = true
 	
 
-func _on_hora_estudiando(materia, clase, estudiada):
-	estudiando(materia, clase, estudiada)
-func _on_hora_2_estudiando(materia, clase, estudiada):
-	estudiando(materia, clase, estudiada)
-func estudiando(materia, clase, estudiada):
-	print(str(materia) + " " + str(clase) + " " + str(estudiada))
+func _on_hora_estudiando(materia, clase, colocado, id):
+	estudiando(materia, clase, colocado, id)
+func _on_hora_2_estudiando(materia, clase, colocado, id):
+	estudiando(materia, clase, colocado, id)
+func estudiando(materia, clase, colocado, id):
+	print("Saqué " if !colocado else "Estudié " + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
 	
 	if clase >= 0:
-		cambiarFaltas(-estudiada)
-		clasesSalteadas[clase] = estudiada > 0
+		cambiarFaltas(colocado)
+		if colocado:
+			clasesSalteadas += str(clase)
+		else:
+			clasesSalteadas.replace(str(clase), "")
 		
-		if(clasesSalteadas[clase]):
-			print("Falto a " + str(clase))
+		print("Falto" if colocado else "Asisto" + " a " + str(clase))
 	print(clasesSalteadas)
+	
+	var i = examenes.find(materia)
+	if id < examenesId[i]:
+		if colocado:
+			estudiados[materia] += 1
+		else:
+			estudiados[materia] -= 1
 	
 
 func _on_terminar_pressed():
+	var currentExamen = examenes[currentSemana]
+	
+	Dialogic.VAR.ausentes = clasesSalteadas
+	Dialogic.VAR.examen = currentExamen
+	
+	if estudiados[currentExamen] >= librosTotales[currentExamen]:
+		Dialogic.VAR.llegaBien = true
+	
 	if Dialogic.current_timeline == null:
 		Dialogic.start("res://clases/Clases.dtl")
 	
 
 func _on_dialogic_signal(argument:String):
-	print(str(argument) + " " + str(currentClase))
-	
-	if argument == "finClase":
-		for i in range(currentClase, clasesSalteadas.size()):
-			currentClase += 1
-			if currentClase < clasesSalteadas.size():
-				Dialogic.VAR.examen = examenes[currentSemana][currentClase]
-				
-				if clasesSalteadas[currentClase] == false:
-					break
-			else:
-				break
-			
-		Dialogic.VAR.nextClase = currentClase
-		
-		if currentClase >= clasesSalteadas.size():
-			currentClase = -1
-			currentSemana += 1
-			print(Dialogic.VAR.goodEnding)
+	if argument == "finde":
+		clasesSalteadas = ""
+		currentSemana += 1
 		
 		if currentSemana >= 4:
 			if Dialogic.VAR.goodEnding:
