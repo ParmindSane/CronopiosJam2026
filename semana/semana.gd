@@ -60,7 +60,7 @@ func estudiando(materia, clase, colocado, id):
 		if colocado:
 			clasesSalteadas += str(clase)
 		else:
-			clasesSalteadas.replace(str(clase), "")
+			clasesSalteadas = clasesSalteadas.replace(str(clase), "")
 		
 		print(("Falto" if colocado else "Asisto") + " a " + str(clase))
 	print("Faltando a " + str(clasesSalteadas))
@@ -71,11 +71,13 @@ func estudiando(materia, clase, colocado, id):
 			estudiados[materia] += 1
 		else:
 			estudiados[materia] -= 1
-	if estudiados[materia] > librosTotales[materia]:
+	if estudiados[materia] >= librosTotales[materia]:
 		fullEstudiados += str(materia)
 	else:
-		fullEstudiados.replace(str(materia), "")
+		fullEstudiados = fullEstudiados.replace(str(materia), "")
+	
 	print("Vengo estudiando " + str(estudiados))
+	print("Debo estudiar " + str(librosTotales))
 	print("Terminé de estudiar " + fullEstudiados)
 	
 

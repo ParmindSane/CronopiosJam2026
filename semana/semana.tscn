@@ -211,4 +211,6 @@ text = "Empezar semana"
 [connection signal="estudiando" from="Calendario/Domingo/Hora2" to="." method="_on_hora_2_estudiando"]
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros0" method="_on_drop_zone_drop_applied"]
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros1" method="_on_drop_zone_drop_applied"]
+[connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros2" method="_on_drop_zone_drop_applied"]
+[connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros4" method="_on_drop_zone_drop_applied"]
 [connection signal="pressed" from="Terminar" to="." method="_on_terminar_pressed"]
