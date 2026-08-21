@@ -11,7 +11,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_jk0a6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
-size = Vector2(144, 369)
+size = Vector2(380, 622)
 
 [sub_resource type="Resource" id="Resource_f160x"]
 script = ExtResource("7_by6ar")
@@ -24,13 +24,12 @@ id = "libro"
 [node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("semanas")]
 script = ExtResource("1_frfks")
 faltasStart = 4
-semanas = [NodePath("Calendario1"), NodePath("Calendario2")]
+semanas = [NodePath("Calendario1")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
 layer = -1
 
 [node name="Fondo" type="TextureRect" parent="CanvasLayer" unique_id=853488876]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,11 +50,10 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Calendario1" type="HBoxContainer" parent="." unique_id=332263115]
-visible = false
-offset_left = 287.0
-offset_top = 217.0
-offset_right = 1088.0
-offset_bottom = 596.0
+offset_left = 130.0
+offset_top = 295.0
+offset_right = 667.0
+offset_bottom = 558.0
 size_flags_horizontal = 3
 
 [node name="Lunes" type="VBoxContainer" parent="Calendario1" unique_id=159460927]
@@ -63,10 +61,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Lunes" unique_id=175833315 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
+position = Vector2(43, 60)
 
 [node name="Hora2" parent="Calendario1/Lunes" unique_id=1952701215 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(43, 185)
 clase = -1
 id = 1
 
@@ -75,12 +73,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Martes" unique_id=876907168 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
+position = Vector2(40, 60)
 clase = 1
 id = 2
 
 [node name="Hora2" parent="Calendario1/Martes" unique_id=1032912229 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(40, 185)
 clase = -1
 id = 3
 
@@ -89,21 +87,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Miercoles" unique_id=1299513647 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-monitoring = false
-monitorable = false
+position = Vector2(42, 60)
 clase = 2
 id = 4
 
-[node name="Label" type="Label" parent="Calendario1/Miercoles/Hora" unique_id=1444246076]
-offset_left = -57.0
-offset_top = -37.0
-offset_right = 54.0
-offset_bottom = -14.0
-text = "EXAMEN"
-
 [node name="Hora2" parent="Calendario1/Miercoles" unique_id=446372523 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(42, 185)
 clase = -1
 id = 5
 
@@ -112,12 +101,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Jueves" unique_id=1303579161 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
+position = Vector2(40, 60)
 clase = 3
 id = 6
 
 [node name="Hora2" parent="Calendario1/Jueves" unique_id=2110879475 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(40, 185)
 clase = -1
 id = 7
 
@@ -126,12 +115,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Viernes" unique_id=1433997705 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
+position = Vector2(40, 60)
 clase = 4
 id = 8
 
 [node name="Hora2" parent="Calendario1/Viernes" unique_id=1949908285 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(40, 185)
 clase = -1
 id = 9
 
@@ -140,12 +129,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Sabado" unique_id=882903521 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
+position = Vector2(41, 60)
 clase = -1
 id = 10
 
 [node name="Hora2" parent="Calendario1/Sabado" unique_id=780902170 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(41, 185)
 clase = -1
 id = 11
 
@@ -154,131 +143,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Hora" parent="Calendario1/Domingo" unique_id=1293139956 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
+position = Vector2(38, 60)
 clase = -1
 id = 12
 
 [node name="Hora2" parent="Calendario1/Domingo" unique_id=2121886037 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 13
-
-[node name="Calendario2" type="HBoxContainer" parent="." unique_id=2076429899]
-offset_left = 287.0
-offset_top = 217.0
-offset_right = 1088.0
-offset_bottom = 596.0
-size_flags_horizontal = 3
-
-[node name="Lunes" type="VBoxContainer" parent="Calendario2" unique_id=89993018]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Lunes" unique_id=1336880379 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-id = 14
-
-[node name="Label" type="Label" parent="Calendario2/Lunes/Hora" unique_id=1285070132]
-offset_left = -57.0
-offset_top = -37.0
-offset_right = 54.0
-offset_bottom = -14.0
-text = "EXAMEN"
-
-[node name="Hora2" parent="Calendario2/Lunes" unique_id=789703693 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 15
-
-[node name="Martes" type="VBoxContainer" parent="Calendario2" unique_id=1534126181]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Martes" unique_id=1411696504 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-clase = 1
-id = 16
-
-[node name="Hora2" parent="Calendario2/Martes" unique_id=1344203325 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 17
-
-[node name="Miercoles" type="VBoxContainer" parent="Calendario2" unique_id=1406884470]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Miercoles" unique_id=1952121840 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-monitoring = false
-monitorable = false
-clase = 2
-id = 18
-
-[node name="Hora2" parent="Calendario2/Miercoles" unique_id=1167141489 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 5
-
-[node name="Jueves" type="VBoxContainer" parent="Calendario2" unique_id=23429961]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Jueves" unique_id=498990506 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-clase = 3
-id = 6
-
-[node name="Hora2" parent="Calendario2/Jueves" unique_id=1801016402 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 7
-
-[node name="Viernes" type="VBoxContainer" parent="Calendario2" unique_id=831954957]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Viernes" unique_id=1315666628 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-clase = 4
-id = 8
-
-[node name="Hora2" parent="Calendario2/Viernes" unique_id=1331892436 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 9
-
-[node name="Sabado" type="VBoxContainer" parent="Calendario2" unique_id=1227724720]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Sabado" unique_id=195647713 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-clase = -1
-id = 10
-
-[node name="Hora2" parent="Calendario2/Sabado" unique_id=713644384 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
-clase = -1
-id = 11
-
-[node name="Domingo" type="VBoxContainer" parent="Calendario2" unique_id=517397658]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Hora" parent="Calendario2/Domingo" unique_id=1126638397 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 37)
-clase = -1
-id = 12
-
-[node name="Hora2" parent="Calendario2/Domingo" unique_id=418691762 instance=ExtResource("3_j7k03")]
-position = Vector2(57, 114)
+position = Vector2(38, 185)
 clase = -1
 id = 13
 
 [node name="Libros" type="Area2D" parent="." unique_id=1522384124]
 self_modulate = Color(0.01666665, 1, 0, 1)
-position = Vector2(111, 406)
+position = Vector2(952, 331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Libros" unique_id=495899196]
 shape = SubResource("RectangleShape2D_qe4n8")
@@ -292,24 +168,24 @@ accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
 
 [node name="Libros0" type="Node2D" parent="Libros" unique_id=1643653101]
-position = Vector2(0, -133)
+position = Vector2(0, -54)
 script = ExtResource("6_j7k03")
 cantidadTotal = 8
 
 [node name="Libros1" type="Node2D" parent="Libros" unique_id=1554100820]
-position = Vector2(0, -58)
+position = Vector2(0, 191)
 script = ExtResource("6_j7k03")
 cantidadTotal = 19
 materia = 1
 
 [node name="Libros2" type="Node2D" parent="Libros" unique_id=1216710622]
-position = Vector2(0, 47)
+position = Vector2(0, -191)
 script = ExtResource("6_j7k03")
 cantidadTotal = 3
 materia = 2
 
 [node name="Libros4" type="Node2D" parent="Libros" unique_id=1034012713]
-position = Vector2(0, 139)
+position = Vector2(0, 62)
 script = ExtResource("6_j7k03")
 cantidadTotal = 14
 materia = 4
@@ -335,10 +211,6 @@ text = "Empezar semana"
 [connection signal="estudiando" from="Calendario1/Sabado/Hora2" to="." method="_on_hora_2_estudiando"]
 [connection signal="estudiando" from="Calendario1/Domingo/Hora" to="." method="_on_hora_estudiando"]
 [connection signal="estudiando" from="Calendario1/Domingo/Hora2" to="." method="_on_hora_2_estudiando"]
-[connection signal="estudiando" from="Calendario2/Lunes/Hora" to="." method="_on_hora_estudiando"]
-[connection signal="estudiando" from="Calendario2/Lunes/Hora2" to="." method="_on_hora_2_estudiando"]
-[connection signal="estudiando" from="Calendario2/Martes/Hora" to="." method="_on_hora_estudiando"]
-[connection signal="estudiando" from="Calendario2/Martes/Hora2" to="." method="_on_hora_2_estudiando"]
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros0" method="_on_drop_zone_drop_applied"]
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros1" method="_on_drop_zone_drop_applied"]
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros2" method="_on_drop_zone_drop_applied"]
