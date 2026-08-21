@@ -261,10 +261,9 @@ label_settings = SubResource("LabelSettings_jk0a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fechas1" type="Sprite2D" parent="Cuaderno" unique_id=1112056155]
-visible = false
+[node name="Fechas1" type="Sprite2D" parent="Cuaderno" unique_id=495715146]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(298, 140)
+position = Vector2(296, 136)
 texture = ExtResource("9_4ukv1")
 metadata/_edit_group_ = true
 

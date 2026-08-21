@@ -1,0 +1,12 @@
+if {goodEnding} == true:
+	audio "res://menu/endings/goodEnding.mp3"
+	label goodEnding
+	[background arg="res://menu/endings/FinalBueno_1.png" fade="6.0" wait="true"]
+	[background arg="res://menu/endings/FinalBueno_2.png" fade="6.0" wait="true"]
+	jump badEnding
+else:
+	audio music "res://menu/endings/badEnding.mp3"
+	label badEnding
+	[background arg="res://menu/endings/FinalMalo_1.png" fade="6.0" wait="true"]
+	[background arg="res://menu/endings/FinalMalo_2.png" fade="6.0" wait="true"]
+	jump badEnding

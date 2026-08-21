@@ -32,6 +32,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Clases": "res://clases/Clases.dtl",
+"ending": "res://menu/endings/ending.dtl",
 "intro": "res://menu/intro/intro.dtl"
 }
 layout/style_directory={}

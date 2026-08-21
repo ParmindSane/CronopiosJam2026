@@ -34,7 +34,7 @@ if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------ANGELICA
 if !"1" in {ausentes}:
-	[background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
+	[background arg="res://clases/Aula.png" fade="1.0" transition="Push Left" wait="true"]
 	if {examen} != 1.0:
 		join Angelica (Clase) center
 		Angelica: No se crean que los voy a aprobar sólo porque se portan bien. En el mundo real, las cosas no llegan en bandeja de plata.
@@ -65,7 +65,7 @@ if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------FERNANDO
 if !"2" in {ausentes}:
-	[background arg="res://clases/fondo2.jpeg" fade="1.0" transition="Push Left" wait="true"]
+	[background arg="res://clases/Aula.png" fade="1.0" transition="Push Left" wait="true"]
 	join Fernando center
 	if {examen} != 2.0:
 		Fernando: Último mes y ya terminamos, no me vengan a hinchar.
