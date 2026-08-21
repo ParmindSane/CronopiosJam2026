@@ -33,6 +33,7 @@ if !"0" in {ausentes}:
 leave --All--
 if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
+	set {huboChamullo} = false
 # --------------------------------------------------ANGELICA
 if !"1" in {ausentes}:
 	[background arg="res://clases/Aula2.png" fade="1.0" transition="Push Left" wait="true"]
@@ -64,6 +65,7 @@ if !"1" in {ausentes}:
 leave --All--
 if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
+	set {huboChamullo} = false
 # --------------------------------------------------FERNANDO
 if !"2" in {ausentes}:
 	[background arg="res://clases/Aula3.png" fade="1.0" transition="Push Left" wait="true"]
@@ -86,6 +88,7 @@ if !"2" in {ausentes}:
 leave --All--
 if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
+	set {huboChamullo} = false
 # --------------------------------------------------PASILLO
 audio RuidoPatio "res://clases/Pasillos/amb_patio.mp3"
 [background arg="res://clases/Pasillos/Pasillo.png" fade="1.0" transition="Push Left" wait="true"]
@@ -105,6 +108,9 @@ elif {examen} == 1.0:
 	Alejo (2): Pero me tranquiliza que siempre estés ahí al lado.
 leave --All--
 audio RuidoPatio -
+if {huboChamullo} == true:
+	audio music "res://clases/claseNormal.mp3"
+	set {huboChamullo} = false
 # --------------------------------------------------ANGELICA
 if !"4" in {ausentes}:
 	[background arg="res://clases/Aula4.png" fade="1.0" transition="Push Left" wait="true"]
@@ -140,4 +146,6 @@ if {goodEnding} == true:
 	# goodEnding
 else:
 	# badEnding
+[clear time="0.0" portraits="false" background="false" positions="false" style="false"]
 [signal arg="finde"]
+[end_timeline]

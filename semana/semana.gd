@@ -155,6 +155,7 @@ func _on_dialogic_signal(argument:String):
 		currentSemana += 1
 		
 		if currentSemana >= 4:
+			musiquita.stop()
 			Dialogic.start("res://menu/endings/ending.dtl")
 			#if Dialogic.VAR.goodEnding:
 				#get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
