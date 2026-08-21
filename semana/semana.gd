@@ -5,6 +5,7 @@ var faltas: float
 @export var faltasCartel: Node
 
 @export var fechasCarteles: Array[Sprite2D]
+@export var numSemanaCartel: AnimatedSprite2D
 
 var clasesSalteadas: String
 var currentSemana: int
@@ -76,6 +77,8 @@ func mostrarCalendarios(i: int):
 	
 	marcaExamen.reparent(examenesNodos[i], false)
 	marcaExamen.visible = true
+	
+	numSemanaCartel.play("semana" + str(i+1))
 	
 	if i > 0:
 		fechasCarteles[i-1].visible = true
