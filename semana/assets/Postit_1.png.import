@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7tlt8h5dmtrs"
-path="res://.godot/imported/libro.webp-07e05609d669cbe4e377393c3ad2c692.ctex"
+uid="uid://wui6egl2e64u"
+path="res://.godot/imported/Postit_1.png-1ee42b6c8099248deb09be5642e24344.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://semana/libro.webp"
-dest_files=["res://.godot/imported/libro.webp-07e05609d669cbe4e377393c3ad2c692.ctex"]
+source_file="res://semana/assets/Postit_1.png"
+dest_files=["res://.godot/imported/Postit_1.png-1ee42b6c8099248deb09be5642e24344.ctex"]
 
 [params]
 

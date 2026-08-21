@@ -22,6 +22,8 @@ const librosTotales = [8, 19, 3, 0, 14]
 
 @export var irClaseButton: BaseButton
 
+@export var musiquita: AudioStreamPlayer
+
 func _ready():
 	currentSemana = 0
 	
@@ -81,6 +83,8 @@ func mostrarCalendarios(i: int):
 	if i > 0:
 		fechasCarteles[i-1].visible = true
 	
+	musiquita.play(0)
+	
 
 func cambiarFaltas(estudio: bool):
 	if !estudio:
@@ -136,6 +140,8 @@ func _on_terminar_pressed():
 	Dialogic.VAR.ausentes = clasesSalteadas
 	Dialogic.VAR.examen = examenes[currentSemana]
 	Dialogic.VAR.llegaBien = fullEstudiados
+	
+	musiquita.stop()
 	
 	if Dialogic.current_timeline == null:
 		Dialogic.start("res://clases/Clases.dtl")

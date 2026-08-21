@@ -1,3 +1,4 @@
+audio music "res://menu/intro/Intro.mp3"
 [background arg="res://menu/intro/Intro_1.png" fade="1.0" wait="true"]
 Samuel: Desde siempre tuve muchas cosas.
 [background arg="res://menu/intro/Intro_2.png" fade="1.0" wait="true"]

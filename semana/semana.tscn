@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b0vlj1tugenav" path="res://semana/assets/semanaNum_4.png" id="13_rgc1k"]
 [ext_resource type="Texture2D" uid="uid://bmf5piyftuosc" path="res://semana/assets/flecha.png" id="14_f160x"]
 [ext_resource type="Script" uid="uid://xrimkwpja1s4" path="res://menu/butt.gd" id="15_rgc1k"]
+[ext_resource type="AudioStream" uid="uid://c1elvmmpmnh57" path="res://semana/assets/A la noche.mp3" id="17_rgc1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(380, 622)
@@ -71,7 +72,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "fechasCarteles", "numSemanaCartel", "semanas", "marcaExamen", "irClaseButton")]
+[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "fechasCarteles", "numSemanaCartel", "semanas", "marcaExamen", "irClaseButton", "musiquita")]
 script = ExtResource("1_frfks")
 faltasStart = 4
 faltasCartel = NodePath("Cuaderno/Faltas")
@@ -80,6 +81,7 @@ numSemanaCartel = NodePath("Cuaderno/NumSemana")
 semanas = [NodePath("Calendario1")]
 marcaExamen = NodePath("MarcaExamen")
 irClaseButton = NodePath("Terminar")
+musiquita = NodePath("Musiquita")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
 layer = -1
@@ -216,24 +218,24 @@ accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
 
 [node name="Libros0" type="Node2D" parent="Libros" unique_id=1643653101]
-position = Vector2(0, -54)
+position = Vector2(0, -42)
 script = ExtResource("6_j7k03")
 cantidadTotal = 8
 
 [node name="Libros1" type="Node2D" parent="Libros" unique_id=1554100820]
-position = Vector2(0, 191)
+position = Vector2(0, 203)
 script = ExtResource("6_j7k03")
 cantidadTotal = 19
 materia = 1
 
 [node name="Libros2" type="Node2D" parent="Libros" unique_id=1216710622]
-position = Vector2(0, -191)
+position = Vector2(0, -186)
 script = ExtResource("6_j7k03")
 cantidadTotal = 3
 materia = 2
 
 [node name="Libros4" type="Node2D" parent="Libros" unique_id=1034012713]
-position = Vector2(0, 62)
+position = Vector2(0, 74)
 script = ExtResource("6_j7k03")
 cantidadTotal = 14
 materia = 4
@@ -312,6 +314,11 @@ metadata/_edit_group_ = true
 self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_by6ar")
+
+[node name="Musiquita" type="AudioStreamPlayer" parent="." unique_id=1615673661]
+stream = ExtResource("17_rgc1k")
+autoplay = true
+parameters/looping = true
 
 [connection signal="estudiando" from="Calendario1/Lunes/Hora" to="." method="_on_hora_estudiando"]
 [connection signal="estudiando" from="Calendario1/Lunes/Hora2" to="." method="_on_hora_2_estudiando"]

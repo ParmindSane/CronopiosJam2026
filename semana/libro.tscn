@@ -2,13 +2,51 @@
 
 [ext_resource type="Script" uid="uid://r3yvhndvyxjs" path="res://semana/libro.gd" id="1_6pxll"]
 [ext_resource type="Script" uid="uid://crmnw3ldr3xev" path="res://addons/drag_and_drop/scripts/draggable.gd" id="2_6pxll"]
+[ext_resource type="Texture2D" uid="uid://ou476pe0ctsa" path="res://semana/assets/Postit_0.png" id="2_e4kog"]
 [ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="3_2rtx1"]
+[ext_resource type="Texture2D" uid="uid://wui6egl2e64u" path="res://semana/assets/Postit_1.png" id="3_saa17"]
+[ext_resource type="Texture2D" uid="uid://bmm07hjeocwwl" path="res://semana/assets/Postit_2.png" id="4_1o1al"]
+[ext_resource type="AudioStream" uid="uid://dxhjfpo456lrh" path="res://semana/assets/papelAgarrar.mp3" id="4_6pxll"]
+[ext_resource type="Texture2D" uid="uid://b4m8wancirodt" path="res://semana/assets/Postit_4.png" id="5_0gffl"]
+[ext_resource type="AudioStream" uid="uid://b4brlerukla88" path="res://semana/assets/papelColocar.mp3" id="5_2rtx1"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iykxl"]
-load_path = "res://.godot/imported/libro.webp-07e05609d669cbe4e377393c3ad2c692.ctex"
+[sub_resource type="SpriteFrames" id="SpriteFrames_qe4n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e4kog")
+}],
+"loop": 0,
+"name": &"materia0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_saa17")
+}],
+"loop": 0,
+"name": &"materia1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1o1al")
+}],
+"loop": 0,
+"name": &"materia2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0gffl")
+}],
+"loop": 0,
+"name": &"materia4",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
-size = Vector2(113, 72)
+size = Vector2(40, 40)
 
 [sub_resource type="Resource" id="Resource_qerri"]
 script = ExtResource("3_2rtx1")
@@ -18,9 +56,10 @@ id = "libro"
 script = ExtResource("1_6pxll")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=84374299]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=976870370]
 scale = Vector2(0.53, 0.53)
-texture = SubResource("CompressedTexture2D_iykxl")
+sprite_frames = SubResource("SpriteFrames_qe4n8")
+animation = &"materia4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=602618241]
 shape = SubResource("RectangleShape2D_qe4n8")
@@ -32,4 +71,11 @@ dragging_speed = 50.0
 type = SubResource("Resource_qerri")
 metadata/_custom_type_script = "uid://crmnw3ldr3xev"
 
+[node name="SonidoAgarrar" type="AudioStreamPlayer" parent="." unique_id=697788377]
+stream = ExtResource("4_6pxll")
+
+[node name="SonidoColocar" type="AudioStreamPlayer" parent="." unique_id=393916043]
+stream = ExtResource("5_2rtx1")
+
+[connection signal="drag_ended" from="Draggable" to="." method="_on_draggable_drag_ended"]
 [connection signal="drag_started" from="Draggable" to="." method="_on_draggable_drag_started"]
