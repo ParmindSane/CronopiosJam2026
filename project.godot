@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CronopiosJam"
-run/main_scene="uid://cl76r8gam44x0"
+run/main_scene="uid://jpiw3n4ypr6e"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
