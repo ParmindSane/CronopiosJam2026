@@ -16,6 +16,9 @@ metadata/_custom_type_script = "uid://b5wqxyc42r5u"
 script = ExtResource("3_v0wbk")
 id = "libro"
 
+[sub_resource type="LabelSettings" id="LabelSettings_g1o7d"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="Hora" type="Area2D" unique_id=175833315]
 script = ExtResource("1_g1o7d")
 metadata/_edit_group_ = true
@@ -31,5 +34,17 @@ drop_behavior = SubResource("Resource_ruuom")
 snap_style = 1
 accepted_draggable_types = Array[ExtResource("3_v0wbk")]([SubResource("Resource_41cau")])
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[node name="Label" type="Label" parent="." unique_id=1023454444]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "id"
+label_settings = SubResource("LabelSettings_g1o7d")
 
 [connection signal="occupant_changed" from="DropZone" to="." method="_on_drop_zone_occupant_changed"]

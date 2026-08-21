@@ -90,6 +90,7 @@ size_flags_horizontal = 3
 position = Vector2(42, 60)
 clase = 2
 id = 4
+examen = true
 
 [node name="Hora2" parent="Calendario1/Miercoles" unique_id=446372523 instance=ExtResource("3_j7k03")]
 position = Vector2(42, 185)
@@ -154,6 +155,7 @@ id = 13
 
 [node name="Libros" type="Area2D" parent="." unique_id=1522384124]
 self_modulate = Color(0.01666665, 1, 0, 1)
+z_index = 10
 position = Vector2(952, 331)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Libros" unique_id=495899196]
@@ -191,6 +193,7 @@ cantidadTotal = 14
 materia = 4
 
 [node name="Terminar" type="Button" parent="." unique_id=181572012]
+z_index = 11
 offset_left = 504.0
 offset_top = 91.0
 offset_right = 645.0

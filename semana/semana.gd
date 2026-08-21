@@ -19,13 +19,6 @@ var irClaseButton: Button
 
 func _ready():
 	currentSemana = 0
-	mostrarCalendarios(currentSemana)
-	
-	irClaseButton = $Terminar
-	
-	faltas = faltasStart + 1
-	faltasCartel = $Faltas
-	cambiarFaltas(true)
 	
 	for clase in examenes:
 		var i = examenes.find(clase)
@@ -33,6 +26,33 @@ func _ready():
 	
 	for i in range(5):
 		estudiados.push_back(0)
+	
+	for i in range(0, 4):
+		var horaId = 0 + 14*i
+		
+		var s
+		if i>0:
+			s = semanas[i-1].duplicate()
+			semanas.push_back(s)
+			add_child(s)
+		else:
+			s = semanas[i]
+		
+		var dias = s.get_children()
+		for d in dias:
+			var horas = d.get_children()
+			for h in horas:
+				h.connect("estudiando", estudiando)
+				h.setExamen(horaId in examenesId, horaId)
+				horaId += 1
+	
+	mostrarCalendarios(currentSemana)
+	
+	irClaseButton = $Terminar
+	
+	faltas = faltasStart + 1
+	faltasCartel = $Faltas
+	cambiarFaltas(true)
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
@@ -62,10 +82,10 @@ func cambiarFaltas(estudio: bool):
 		irClaseButton.disabled = true
 	
 
-func _on_hora_estudiando(materia, clase, colocado, id):
-	estudiando(materia, clase, colocado, id)
-func _on_hora_2_estudiando(materia, clase, colocado, id):
-	estudiando(materia, clase, colocado, id)
+#func _on_hora_estudiando(materia, clase, colocado, id):
+	#estudiando(materia, clase, colocado, id)
+#func _on_hora_2_estudiando(materia, clase, colocado, id):
+	#estudiando(materia, clase, colocado, id)
 func estudiando(materia, clase, colocado, id):
 	print("-------------------------------")
 	print(("Saqué " if !colocado else "Estudié ") + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
