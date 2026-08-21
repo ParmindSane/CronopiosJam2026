@@ -39,7 +39,13 @@ func _ready():
 
 func mostrarCalendarios(i: int):
 	for s in semanas:
-		s.visible = semanas.find(s) == i
+		var soyEse = semanas.find(s) == i
+		var modo = Node.PROCESS_MODE_DISABLED
+		if soyEse:
+			modo = Node.PROCESS_MODE_INHERIT
+		s.visible = soyEse
+		s.process_mode = modo
+	
 
 func cambiarFaltas(estudio: bool):
 	if !estudio:
