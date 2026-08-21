@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bhdmaoyh2qbs3" path="res://semana/assets/semanaNum_2.png" id="11_qerri"]
 [ext_resource type="Texture2D" uid="uid://b2be3pecp4isr" path="res://semana/assets/semanaNum_3.png" id="12_f160x"]
 [ext_resource type="Texture2D" uid="uid://b0vlj1tugenav" path="res://semana/assets/semanaNum_4.png" id="13_rgc1k"]
+[ext_resource type="Texture2D" uid="uid://bmf5piyftuosc" path="res://semana/assets/flecha.png" id="14_f160x"]
+[ext_resource type="Script" uid="uid://xrimkwpja1s4" path="res://menu/butt.gd" id="15_rgc1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(380, 622)
@@ -69,7 +71,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "fechasCarteles", "numSemanaCartel", "semanas", "marcaExamen")]
+[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "fechasCarteles", "numSemanaCartel", "semanas", "marcaExamen", "irClaseButton")]
 script = ExtResource("1_frfks")
 faltasStart = 4
 faltasCartel = NodePath("Cuaderno/Faltas")
@@ -77,6 +79,7 @@ fechasCarteles = [NodePath("Cuaderno/Fechas1"), NodePath("Cuaderno/Fechas2"), No
 numSemanaCartel = NodePath("Cuaderno/NumSemana")
 semanas = [NodePath("Calendario1")]
 marcaExamen = NodePath("MarcaExamen")
+irClaseButton = NodePath("Terminar")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
 layer = -1
@@ -284,13 +287,26 @@ sprite_frames = SubResource("SpriteFrames_qe4n8")
 animation = &"semana1"
 metadata/_edit_group_ = true
 
-[node name="Terminar" type="Button" parent="." unique_id=181572012]
+[node name="Terminar" type="TextureButton" parent="." unique_id=413927073]
 z_index = 11
-offset_left = 504.0
-offset_top = 91.0
-offset_right = 645.0
-offset_bottom = 122.0
-text = "Empezar semana"
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 480.0
+offset_top = 40.0
+offset_right = 775.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.83, 0.83)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+texture_normal = ExtResource("14_f160x")
+script = ExtResource("15_rgc1k")
+metadata/_edit_group_ = true
 
 [node name="MarcaExamen" type="Sprite2D" parent="." unique_id=1690333283]
 self_modulate = Color(0, 0, 0, 1)

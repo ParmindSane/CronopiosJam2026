@@ -20,7 +20,7 @@ var fullEstudiados: String
 var estudiados: Array[int]
 const librosTotales = [8, 19, 3, 0, 14]
 
-var irClaseButton: Button
+@export var irClaseButton: BaseButton
 
 func _ready():
 	currentSemana = 0
@@ -57,8 +57,6 @@ func _ready():
 				horaId += 1
 	
 	mostrarCalendarios(currentSemana)
-	
-	irClaseButton = $Terminar
 	
 	faltas = faltasStart + 1
 	cambiarFaltas(true)

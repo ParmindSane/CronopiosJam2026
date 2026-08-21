@@ -27,6 +27,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ou8eh")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=27679066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ia3hl")
+
 [node name="Control" type="Control" parent="." unique_id=1475849567]
 layout_mode = 1
 anchors_preset = 8
@@ -38,8 +47,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=1838334492]
-position = Vector2(-7.6293945e-06, 3.8146973e-06)
-scale = Vector2(1.4496645, 1.4496645)
 sprite_frames = SubResource("SpriteFrames_qe4n8")
 autoplay = "default"
 

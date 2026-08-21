@@ -27,10 +27,12 @@ directories/dch_directory={
 "Angelica": "res://clases/3_Angelica/Angelica.dch",
 "Fernando": "res://clases/0_Fernando/Fernando.dch",
 "Roberto": "res://clases/2_Roberto/Roberto.dch",
+"Samuel": "res://clases/Pasillos/Samuel.dch",
 "Solana": "res://clases/1_Solana/Solana.dch"
 }
 directories/dtl_directory={
-"Clases": "res://clases/Clases.dtl"
+"Clases": "res://clases/Clases.dtl",
+"intro": "res://menu/intro/intro.dtl"
 }
 layout/style_directory={}
 layout/style_list=[]
