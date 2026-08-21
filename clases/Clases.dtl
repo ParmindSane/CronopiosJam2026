@@ -1,76 +1,136 @@
 set {buenChamullo} = false
-# --------------------------------------------------FERNANDO
+set {huboChamullo} = false
+audio "res://clases/timbre.mp3"
+audio music "res://clases/claseNormal.mp3"
+# --------------------------------------------------SOLANA
 if !"0" in {ausentes}:
-	[background arg="res://clases/fondo2.jpeg" fade="1.0" wait="true"]
-	join Fernando center
+	[background arg="res://clases/Aula.png" fade="1.0" wait="true"]
 	if {examen} != 0.0:
-		Fernando: Hola y chau
+		join Solana (Clase) center
+		Solana: No existe algo como el buen arte, lo importante es que lo intenten.
+		Solana: En las correcciones de la clase anterior faltaron algunos nombres, no se olviden de entregar la próxima.
 	else:
 		if "0" in {llegaBien}:
-			Fernando: Ya aprobaste bro
+			set {buenChamullo} = true
+			join Solana (Correct) center
+			Solana: ¡Qué velocidad! Alguien estudió para hoy...
 		else:
-			Fernando: La que has liado, chaval
-			- ¿Por qué sos español?
-				Fernando: Porque me mola desaprobar pringados
-			- Venga, tío, ayúdame
+			audio music "res://clases/chamullando.mp3"
+			set {huboChamullo} = true
+			join Solana (Pregunta) center
+			Solana: ¿Qué pasa, Samuel? ¿Tenés alguna duda sobre el examen?
+			- Presionar
 				set {buenChamullo} = true
-				Fernando: Vale, vale
+				Samuel: Quería saber, considerando lo que trabajé en clase y lo que estudié, si era posible levantar a un 10.
+				Solana (Correct): Oh, Samuel, no te preocupes. Las notas son sólo un número, y yo sé que siempre participaste.
+				Solana: Si es algo que te importa, yo sé que lo que tenías que aprender conmigo lo aprendiste, así que no va a haber drama con eso.
+			- Sobornar
+			- Usar estatus
+			- Extorsionar
+			if {buenChamullo} == false:
+				Solana (Incorrect): Ay, Samuel... No, no hace falta.
 leave --All--
-# --------------------------------------------------SOLANA
+if {huboChamullo} == true:
+	audio music "res://clases/claseNormal.mp3"
+# --------------------------------------------------ANGELICA
 if !"1" in {ausentes}:
 	[background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
-	join Solana center
 	if {examen} != 1.0:
-		Solana: Holis UwU
+		join Angelica (Clase) center
+		Angelica: No se crean que los voy a aprobar sólo porque se portan bien. En el mundo real, las cosas no llegan en bandeja de plata.
+		Angelica: Que no se te suban los humos, que bien recuerdo a tu familia en el 2001 pidiendo para pagar la cena.
 	else:
 		if "1" in {llegaBien}:
-			Solana: Aprobaste \:D
+			set {buenChamullo} = true
+			join Angelica (Correct) center
+			Angelica: Alguien anda confiado. ¿Seguro que tenés todo bien?
 		else:
-			Solana: Nos vimo en diciembre
-			- Diciembre tu vieja
-				Solana: Vieja tu vieja
-			- Subime la nota porfa
+			audio music "res://clases/chamullando.mp3"
+			set {huboChamullo} = true
+			join Angelica (Pregunta) center
+			Angelica: ¿Venís a hacer un berrinche, pendejito?
+			- Presionar
+			- Sobornar
+			- Usar estatus
+			- Extorsionar
 				set {buenChamullo} = true
-				Solana: Bueno dale
+				Samuel: Mirá, vieja loca\: los dos sabemos que no estás en una posición como para arriesgarte de esa manera.
+				Samuel: Si llegara a surgir una declaración de alguien tan desagradable como yo, diciendo que alguien tan infame como vos le hizo algo, ¿a quién creés que le van a creer?
+				Samuel: No es necesario llegar a esos límites. Sólo tenés que corregir el error que cometiste al pasar las notas, y todo va a estar bien.
+				Angelica: ¿Eso es lo que querés? No es tan difícil ser claro, pendejito malcriado.
+			if {buenChamullo} == false:
+				Angelica (Incorrect): ¿Me estás jodiendo? No pensé que podrías caer tan bajo.
 leave --All--
-# --------------------------------------------------ROBERTO
+if {huboChamullo} == true:
+	audio music "res://clases/claseNormal.mp3"
+# --------------------------------------------------FERNANDO
 if !"2" in {ausentes}:
 	[background arg="res://clases/fondo2.jpeg" fade="1.0" transition="Push Left" wait="true"]
-	join Roberto center
+	join Fernando center
 	if {examen} != 2.0:
-		Roberto: Hello there!
+		Fernando: Último mes y ya terminamos, no me vengan a hinchar.
 	else:
 		if "2" in {llegaBien}:
-			Roberto: Aprubed
+			set {buenChamullo} = true
+			Fernando: Si ya terminaron, no me molesten.
 		else:
-			Roberto: You desaprobated
-			- fak iu
-				Roberto: joli shit
-			- Jelp mi
-				set {buenChamullo} = true
-				Roberto: Ok I ayudar you
+			audio music "res://clases/chamullando.mp3"
+			set {huboChamullo} = true
+			Fernando: ¿Qué querés?
+			- Presionar
+			- Sobornar
+			- Usar estatus
+			- Extorsionar
+			Fernando: Pibe, a nadie le importa tu nota. Salí de acá.
 leave --All--
+if {huboChamullo} == true:
+	audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------PASILLO
-[background arg="res://clases/fondo1.jpeg" fade="1.0" transition="Push Left" wait="true"]
-join Alejo center
-Alejo: Yo ni imagen tengo we
+audio RuidoPatio "res://clases/Pasillos/amb_patio.mp3"
+[background arg="res://clases/Pasillos/Pasillo.png" fade="1.0" transition="Push Left" wait="true"]
+if {examen} == 2.0:
+	"Alumno 1": Las clases de Solana son re fácil, sólo tenés que llorarle un poco y te deja pasar cualquiera.
+	"Alumno 2": Y, es arte, ¿no? Tendría que estar agradecida de que le entreguemos algo.
+elif {examen} == 0.0:
+	"Alumno 1": ¿La escuchaste a Angélica gritándole a Santi la otra vez? No puedo creer que esa mina no aprenda.
+	"Alumno 2": No sé por qué no la rajaron después de pegarle la cachetada a Teo. Está a un solo error más de que la echen.
+elif {examen} == 4.0:
+	"Alumno 1": Mi mamá me chusmeó que Roberto se la pasa chupándole las medias a los viejos del Club Español.
+	"Alumno 2": Se está matando para ser miembro, pero sigue siendo un gil de ciudad.
+elif {examen} == 1.0:
+	join Alejo (2) center
+	Alejo: Estoy recontra nervioso por el acto de fin de año.
+	Alejo (1): Siempre me tiemblan las patas, empapo todo el mástil y nunca sé dónde poner los ojos.
+	Alejo (2): Pero me tranquiliza que siempre estés ahí al lado.
 leave --All--
+audio RuidoPatio -
 # --------------------------------------------------ANGELICA
 if !"4" in {ausentes}:
-	[background arg="res://clases/fondo2.jpeg" fade="1.0" transition="Push Left" wait="true"]
-	join Angelica center
+	[background arg="res://clases/Aula.png" fade="1.0" transition="Push Left" wait="true"]
 	if {examen} != 4.0:
-		Angelica: K px
+		join Roberto (Clases) center
+		Roberto: Si un producto les llega fallado, tienen el derecho de ir a reclamar a capital... O creo que pueden llamar, también.
+		Roberto: La ciudadanía trata de aprender a vivir en sociedad. Las leyes son las normas que nos mantienen unidos.
 	else:
 		if "4" in {llegaBien}:
-			Angelica: todo ok
+			set {buenChamullo} = true
+			join Roberto (Correct) center
+			Roberto: Me falta revisarlo a fondo, pero se ve que está todo bien. Felicitaciones.
 		else:
-			Angelica: F
-			- F?
-				Angelica: F
-			- G
+			set {huboChamullo} = true
+			audio music "res://clases/chamullando.mp3"
+			join Roberto (Pregunta) center
+			Roberto: ¿Hay algún problema?
+			- Presionar
+			- Sobornar
+			- Usar estatus
 				set {buenChamullo} = true
-				Angelica: H
+				Samuel: Vos sabés que mi familia organiza la fiesta del Club Italiano. Estaba pensando en decirle a mi papá de invitarte.
+				Samuel: A cambio, se me ocurrió que podrías hacerme el favor de corregir ese error en la nota del examen.
+				Roberto (Correct): Y-Ya veo. Fue error mío, ahora lo arreglo. Me disculpo por las molestias.
+			- Extorsionar
+			if {buenChamullo} == false:
+				Roberto (Incorrect): Ya veo. No creo que haya necesidad de continuar esta conversación.
 leave --All--
 # --------------------------------------------------ENDING
 if {buenChamullo} == false:

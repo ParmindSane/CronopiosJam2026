@@ -10,16 +10,43 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "Angelica1",
+&"default_portrait": "Clase",
 &"description": "",
-&"display_name": "Angelica",
+&"display_name": "Angélica",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"Angelica1": {
+"Clase": {
 "export_overrides": {
-"image": "\"res://clases/1_Solana/profe1.png\""
+"image": "\"res://clases/3_Angelica/Angelica_clases.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Correct": {
+"export_overrides": {
+"image": "\"res://clases/3_Angelica/Angelica_correct.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Incorrect": {
+"export_overrides": {
+"image": "\"res://clases/3_Angelica/Angelica_incorrect.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Pregunta": {
+"export_overrides": {
+"image": "\"res://clases/3_Angelica/Angelica_pregunta.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

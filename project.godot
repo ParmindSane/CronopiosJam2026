@@ -62,6 +62,12 @@ audio/channel_defaults={
 "loop": false,
 "volume": 0.0
 },
+"RuidoPatio": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+},
 "music": {
 "audio_bus": "",
 "fade_length": 0.0,
@@ -75,6 +81,7 @@ variables={
 "buenChamullo": false,
 "examen": 1,
 "goodEnding": true,
+"huboChamullo": false,
 "llegaBien": "0"
 }
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diyx0rn6cvltq"
-path="res://.godot/imported/profe1.png-7bf1bba90205f37d582997c642cf3f56.ctex"
+uid="uid://dxlbcsi4lndt3"
+path="res://.godot/imported/Roberto_incorrect.png-b66a2013771e44a99c137109204a8eaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://clases/1_Solana/profe1.png"
-dest_files=["res://.godot/imported/profe1.png-7bf1bba90205f37d582997c642cf3f56.ctex"]
+source_file="res://clases/2_Roberto/Roberto_incorrect.png"
+dest_files=["res://.godot/imported/Roberto_incorrect.png-b66a2013771e44a99c137109204a8eaa.ctex"]
 
 [params]
 
