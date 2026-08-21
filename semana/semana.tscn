@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="5_4ukv1"]
 [ext_resource type="Script" uid="uid://bub1nfmnk1re2" path="res://semana/libro_start.gd" id="6_j7k03"]
 [ext_resource type="Script" uid="uid://b3yrcfpcbpfhu" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_replace.gd" id="7_by6ar"]
-[ext_resource type="FontFile" uid="uid://nf7n1kx8ahhd" path="res://semana/assets/Montserrat/static/Montserrat-Bold.ttf" id="8_j7k03"]
+[ext_resource type="FontFile" uid="uid://b1kp5mud8qnot" path="res://semana/assets/Montserrat-Bold.ttf" id="8_j7k03"]
+[ext_resource type="Texture2D" uid="uid://cmbjdk868nltm" path="res://semana/assets/marcaFechas.png" id="9_4ukv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(380, 622)
@@ -29,10 +30,11 @@ font = SubResource("FontVariation_4ukv1")
 font_size = 49
 font_color = Color(0, 0, 0, 1)
 
-[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "semanas", "marcaExamen")]
+[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "fechasCarteles", "semanas", "marcaExamen")]
 script = ExtResource("1_frfks")
 faltasStart = 4
 faltasCartel = NodePath("Cuaderno/Faltas")
+fechasCarteles = [NodePath("Cuaderno/Fechas1"), NodePath("Cuaderno/Fechas2"), NodePath("Cuaderno/Fechas3")]
 semanas = [NodePath("Calendario1")]
 marcaExamen = NodePath("MarcaExamen")
 
@@ -195,9 +197,12 @@ materia = 4
 
 [node name="Cuaderno" type="Control" parent="." unique_id=474238070]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Faltas" type="Label" parent="Cuaderno" unique_id=713707371]
 layout_mode = 0
@@ -210,6 +215,27 @@ text = "X"
 label_settings = SubResource("LabelSettings_jk0a6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Fechas1" type="Sprite2D" parent="Cuaderno" unique_id=1112056155]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(298, 140)
+texture = ExtResource("9_4ukv1")
+metadata/_edit_group_ = true
+
+[node name="Fechas2" type="Sprite2D" parent="Cuaderno" unique_id=76496754]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(305, 152)
+texture = ExtResource("9_4ukv1")
+metadata/_edit_group_ = true
+
+[node name="Fechas3" type="Sprite2D" parent="Cuaderno" unique_id=1571243666]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(315, 161)
+texture = ExtResource("9_4ukv1")
+metadata/_edit_group_ = true
 
 [node name="Terminar" type="Button" parent="." unique_id=181572012]
 z_index = 11

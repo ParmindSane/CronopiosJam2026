@@ -4,6 +4,8 @@ extends Node2D
 var faltas: float
 @export var faltasCartel: Node
 
+@export var fechasCarteles: Array[Sprite2D]
+
 var clasesSalteadas: String
 var currentSemana: int
 @export var semanas: Array[HBoxContainer]
@@ -74,6 +76,9 @@ func mostrarCalendarios(i: int):
 	
 	marcaExamen.reparent(examenesNodos[i], false)
 	marcaExamen.visible = true
+	
+	if i > 0:
+		fechasCarteles[i-1].visible = true
 	
 
 func cambiarFaltas(estudio: bool):
