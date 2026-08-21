@@ -1,0 +1,32 @@
+audio music "res://menu/intro/Intro.mp3"
+[background arg="res://menu/intro/Intro_1.png" fade="1.0" wait="true"]
+Samuel: Desde siempre tuve muchas cosas.
+[background arg="res://menu/intro/Intro_2.png" fade="1.0" wait="true"]
+Samuel: Muchos hermanos, muchos regalos, muchos amigos, mucha plata.
+[background arg="res://menu/intro/Intro_3.png" fade="1.0" wait="true"]
+Samuel: Pero hay cosas que uno solo puede conseguir con esfuerzo,...
+[background arg="res://menu/intro/Intro_4.png" fade="1.0" wait="true"]
+Samuel: ...y siempre hay alguien que se esfuerza más que vos.
+[background arg="res://menu/intro/Intro_5.png" fade="1.0" wait="true"]
+Samuel: Todos los años terminé perdiendo por centésimas.
+[background arg="res://menu/intro/Intro_6.png" fade="1.0" wait="true"]
+Samuel: 9,37. 9,57.
+[background arg="res://menu/intro/Intro_7.png" fade="1.0" wait="true"]
+Samuel: 9,48. 9,51.
+[background arg="res://menu/intro/Intro_8.png" fade="1.0" wait="true"]
+Samuel: 9,81. 9,87.
+[background arg="res://menu/intro/Intro_9.png" fade="1.0" wait="true"]
+Samuel: Cuanto más lo intento, más imposible parece,...
+[background arg="res://menu/intro/Intro_10.png" fade="1.0" wait="true"]
+Samuel: ...y sus comentarios no ayudan mucho que digamos.
+[background arg="res://menu/intro/Intro_11.png" fade="1.0" wait="true"]
+Samuel: Pero queda un mes para que ocurra la próxima toma de banderas.
+[background arg="res://menu/intro/Intro_12.png" fade="1.0" wait="true"]
+Samuel: Sólo me faltan cuatro exámenes para subir al podio y por fin lograrlo.
+[background arg="res://menu/intro/Intro_13.png" fade="1.0" wait="true"]
+Samuel: O vivir con el fracaso.
+[background arg="res://menu/intro/Intro_13.png" fade="1.0" wait="true"]
+Samuel: Es mi última bala.
+[background arg="res://menu/intro/Intro_15.png" fade="1.0" wait="true"]
+Samuel: Y voy a usar todos los medios para que valga la pena.
+[signal arg="finIntro"]

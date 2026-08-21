@@ -7,20 +7,28 @@ var cantidadActual: int
 var libroRef = preload("res://semana/libro.tscn")
 var libros: Array
 
+var randoms: RandomNumberGenerator
+
 func _ready():
+	randoms = RandomNumberGenerator.new()
+	
 	for i in range(cantidadTotal):
-		addLibro()
+		addLibro(i)
 	
 
-func addLibro():
-		var libroNuevo = libroRef.instantiate()
-		libros.push_back(libroNuevo)
-		add_child(libroNuevo)
-		libroNuevo.position = Vector2(0,0)
-		libroNuevo.setMateria(materia)
+func addLibro(i: int):
+	var libroNuevo = libroRef.instantiate()
+	libros.push_back(libroNuevo)
+	add_child(libroNuevo)
+	
+	var xMap = Global.map(i, 0,cantidadTotal-1, -1, +1)*140
+	var posRandom = randoms.randf_range(-6, +6)
+	libroNuevo.position = Vector2(xMap+posRandom, posRandom)
+	
+	libroNuevo.setMateria(materia, i)
 	
 
 func _on_drop_zone_drop_applied(zone, area, plan):
 	if area.materia == materia:
-			area.queue_free()
-			addLibro()
+		addLibro(area.id)
+		area.queue_free()

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b5wqxyc42r5u" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_reject.gd" id="2_g1o7d"]
 [ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="3_v0wbk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1o7d"]
 size = Vector2(113, 72)
 
 [sub_resource type="Resource" id="Resource_ruuom"]
@@ -16,12 +16,16 @@ metadata/_custom_type_script = "uid://b5wqxyc42r5u"
 script = ExtResource("3_v0wbk")
 id = "libro"
 
+[sub_resource type="LabelSettings" id="LabelSettings_g1o7d"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="Hora" type="Area2D" unique_id=175833315]
 script = ExtResource("1_g1o7d")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210275108]
-shape = SubResource("RectangleShape2D_qe4n8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200733389]
+scale = Vector2(0.675, 1.565)
+shape = SubResource("RectangleShape2D_g1o7d")
 
 [node name="DropZone" type="Node2D" parent="." unique_id=216768803 node_paths=PackedStringArray("attach_spot")]
 script = ExtResource("1_iedbb")
@@ -30,5 +34,18 @@ drop_behavior = SubResource("Resource_ruuom")
 snap_style = 1
 accepted_draggable_types = Array[ExtResource("3_v0wbk")]([SubResource("Resource_41cau")])
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
+
+[node name="Label" type="Label" parent="." unique_id=1023454444]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "id"
+label_settings = SubResource("LabelSettings_g1o7d")
 
 [connection signal="occupant_changed" from="DropZone" to="." method="_on_drop_zone_occupant_changed"]

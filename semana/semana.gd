@@ -2,96 +2,165 @@ extends Node2D
 
 @export var faltasStart: int
 var faltas: float
-var faltasCartel: Label
+@export var faltasCartel: Node
 
-var clasesSalteadas: Array
-var examenes: Array
-var currentClase: int
-var currentMateria: int
+@export var fechasCarteles: Array[Sprite2D]
+@export var numSemanaCartel: AnimatedSprite2D
+
+var clasesSalteadas: String
 var currentSemana: int
+@export var semanas: Array[HBoxContainer]
 
-var irClaseButton: Button
+const examenes = [2, 0, 4, 1]
+var examenesId: Array[int]
+var examenesNodos: Array[Node]
+@export var marcaExamen: Sprite2D
+
+var fullEstudiados: String
+var estudiados: Array[int]
+const librosTotales = [8, 19, 3, 0, 14]
+
+@export var irClaseButton: BaseButton
+
+@export var musiquita: AudioStreamPlayer
 
 func _ready():
 	currentSemana = 0
 	
+	for clase in examenes:
+		var i = examenes.find(clase)
+		examenesId.push_back(clase*2 + 14*i)
+	
 	for i in range(5):
-		clasesSalteadas.push_back(false)
+		estudiados.push_back(0)
 	
-	for i in range(4):
-		var nuevaSemana = []
-		for j in range(5):
-			nuevaSemana.push_back(false)
-		examenes.push_back(nuevaSemana)
-	examenes[0][1] = true
-	print(examenes)
+	for i in range(0, 4):
+		var horaId = 0 + 14*i
+		
+		var s
+		if i>0:
+			s = semanas[i-1].duplicate()
+			semanas.push_back(s)
+			add_child(s)
+		else:
+			s = semanas[i]
+		
+		var dias = s.get_children()
+		for d in dias:
+			var horas = d.get_children()
+			for h in horas:
+				h.connect("estudiando", estudiando)
+				
+				var esExamen = horaId in examenesId
+				if esExamen:
+					examenesNodos.push_back(h)
+				
+				h.setExamen(esExamen, horaId)
+				horaId += 1
 	
-	irClaseButton = $Terminar
+	mostrarCalendarios(currentSemana)
 	
-	faltas = faltasStart
-	faltasCartel = $Faltas
-	cambiarFaltas(0)
+	faltas = faltasStart + 1
+	cambiarFaltas(true)
 	
-	currentClase = -1
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 
-func cambiarFaltas(cambio: int):
-	faltas += cambio
+func mostrarCalendarios(i: int):
+	for s in semanas:
+		var soyEse = semanas.find(s) == i
+		var modo = Node.PROCESS_MODE_DISABLED
+		if soyEse:
+			modo = Node.PROCESS_MODE_INHERIT
+		s.visible = soyEse
+		s.process_mode = modo
+	
+	marcaExamen.reparent(examenesNodos[i], false)
+	marcaExamen.visible = true
+	
+	numSemanaCartel.play("semana" + str(i+1))
+	
+	if i > 0:
+		fechasCarteles[i-1].visible = true
+	
+	musiquita.play(0)
+	
+
+func cambiarFaltas(estudio: bool):
+	if !estudio:
+		faltas += 1
+	else:
+		faltas -= 1
+
 	if faltas >= 0:
-		faltasCartel.label_settings.font_color = Color(1.0, 1.0, 1.0, 1.0)
+		faltasCartel.text = str(int(faltas))
+		faltasCartel.label_settings.font_color = Color(0.0, 0.0, 0.0, 1.0)
 		irClaseButton.disabled = false
-		faltasCartel.text = "Quedan " + str(int(faltas)) + " faltas"
+		irClaseButton.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 	else:
 		faltasCartel.label_settings.font_color = Color(1,0,0)
 		irClaseButton.disabled = true
+		irClaseButton.self_modulate = Color(1.0, 0.0, 0.0, 0.588)
 	
 
-func _on_hora_estudiando(materia, clase, estudiada):
-	estudiando(materia, clase, estudiada)
-func _on_hora_2_estudiando(materia, clase, estudiada):
-	estudiando(materia, clase, estudiada)
-func estudiando(materia, clase, estudiada):
-	print(str(materia) + " " + str(clase) + " " + str(estudiada))
+#func _on_hora_estudiando(materia, clase, colocado, id):
+	#estudiando(materia, clase, colocado, id)
+#func _on_hora_2_estudiando(materia, clase, colocado, id):
+	#estudiando(materia, clase, colocado, id)
+func estudiando(materia, clase, colocado, id):
+	print("-------------------------------")
+	print(("Saqué " if !colocado else "Estudié ") + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
 	
 	if clase >= 0:
-		cambiarFaltas(-estudiada)
-		clasesSalteadas[clase] = estudiada > 0
+		cambiarFaltas(colocado)
+		if colocado:
+			clasesSalteadas += str(clase)
+		else:
+			clasesSalteadas = clasesSalteadas.replace(str(clase), "")
 		
-		if(clasesSalteadas[clase]):
-			print("Falto a " + str(clase))
-	print(clasesSalteadas)
+		print(("Falto" if colocado else "Asisto") + " a " + str(clase))
+	print("Faltando a " + str(clasesSalteadas))
+	
+	var i = examenes.find(materia)
+	if id < examenesId[i]:
+		if colocado:
+			estudiados[materia] += 1
+		else:
+			estudiados[materia] -= 1
+	if estudiados[materia] >= librosTotales[materia]:
+		if ! str(materia) in fullEstudiados:
+			fullEstudiados += str(materia)
+	else:
+		fullEstudiados = fullEstudiados.replace(str(materia), "")
+	
+	print("Vengo estudiando " + str(estudiados))
+	print("Debo estudiar " + str(librosTotales))
+	print("Terminé de estudiar " + fullEstudiados)
 	
 
 func _on_terminar_pressed():
+	Dialogic.VAR.ausentes = clasesSalteadas
+	Dialogic.VAR.examen = examenes[currentSemana]
+	Dialogic.VAR.llegaBien = fullEstudiados
+	
+	musiquita.stop()
+	
 	if Dialogic.current_timeline == null:
 		Dialogic.start("res://clases/Clases.dtl")
 	
 
 func _on_dialogic_signal(argument:String):
-	print(str(argument) + " " + str(currentClase))
-	
-	if argument == "finClase":
-		for i in range(currentClase, clasesSalteadas.size()):
-			currentClase += 1
-			if currentClase < clasesSalteadas.size():
-				Dialogic.VAR.examen = examenes[currentSemana][currentClase]
-				
-				if clasesSalteadas[currentClase] == false:
-					break
-			else:
-				break
-			
-		Dialogic.VAR.nextClase = currentClase
-		
-		if currentClase >= clasesSalteadas.size():
-			currentClase = -1
-			currentSemana += 1
-			print(Dialogic.VAR.goodEnding)
+	if argument == "finde":
+		clasesSalteadas = ""
+		currentSemana += 1
 		
 		if currentSemana >= 4:
-			if Dialogic.VAR.goodEnding:
-				get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
-			else:
-				get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
+			musiquita.stop()
+			Dialogic.start("res://menu/endings/ending.dtl")
+			#if Dialogic.VAR.goodEnding:
+				#get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
+			#else:
+				#get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
+		else:
+			mostrarCalendarios(currentSemana)
 	

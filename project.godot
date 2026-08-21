@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CronopiosJam"
-run/main_scene="uid://cl76r8gam44x0"
+run/main_scene="uid://jpiw3n4ypr6e"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
@@ -23,15 +23,26 @@ Global="*uid://gmtfi2172hmn"
 [dialogic]
 
 directories/dch_directory={
+"Alejo": "res://clases/Pasillos/Alejo.dch",
+"Alumno 1": "res://clases/Pasillos/Alumno 1.dch",
+"Alumno 2": "res://clases/Pasillos/Alumno 2.dch",
+"Angelica": "res://clases/3_Angelica/Angelica.dch",
 "Fernando": "res://clases/0_Fernando/Fernando.dch",
+"Roberto": "res://clases/2_Roberto/Roberto.dch",
+"Samuel": "res://clases/Pasillos/Samuel.dch",
 "Solana": "res://clases/1_Solana/Solana.dch"
 }
 directories/dtl_directory={
-"Clases": "res://clases/Clases.dtl"
+"Clases": "res://clases/Clases.dtl",
+"ending": "res://menu/endings/ending.dtl",
+"intro": "res://menu/intro/intro.dtl"
 }
-layout/style_directory={}
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_directory={
+"": "res://menu/EstiloDialogic.tres",
+"EstiloDialogic": "res://menu/EstiloDialogic.tres"
+}
+layout/style_list=["res://menu/EstiloDialogic.tres"]
+layout/default_style="res://menu/EstiloDialogic.tres"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
@@ -42,7 +53,7 @@ animations/join_default_length=0.5
 animations/join_default_wait=true
 animations/leave_default_length=0.5
 animations/leave_default_wait=true
-animations/cross_fade_default_length=0.5
+animations/cross_fade_default_length=0.0
 choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
@@ -57,6 +68,12 @@ audio/channel_defaults={
 "loop": false,
 "volume": 0.0
 },
+"RuidoPatio": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+},
 "music": {
 "audio_bus": "",
 "fade_length": 0.0,
@@ -66,11 +83,14 @@ audio/channel_defaults={
 }
 glossary/default_case_sensitive=true
 variables={
-"examen": false,
+"ausentes": "012",
+"buenChamullo": false,
+"examen": 1,
 "goodEnding": true,
-"nextClase": -1,
-"respuestaCorrecta": false
+"huboChamullo": false,
+"llegaBien": "0"
 }
+animations/cross_fade_default="Fade Cross"
 
 [display]
 

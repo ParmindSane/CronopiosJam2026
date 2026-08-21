@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bboc3am2bh02m"]
 
 [node name="BadEnding" type="Control" unique_id=1564808813]
+z_index = 15
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
