@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://758xvhf0lg1x" path="res://semana/assets/CasaConTexto_1.png" id="2_jk0a6"]
 [ext_resource type="Script" uid="uid://nj1hdjl1vob2" path="res://addons/drag_and_drop/scripts/drop_zone.gd" id="3_by6ar"]
 [ext_resource type="PackedScene" uid="uid://dvinyfqq8jqa0" path="res://semana/hora.tscn" id="3_j7k03"]
+[ext_resource type="Texture2D" uid="uid://b7plkue3ou74c" path="res://semana/assets/marcaExamen.png" id="4_by6ar"]
 [ext_resource type="Script" uid="uid://djdmnemxrx7bg" path="res://addons/drag_and_drop/resources/draggable_types/draggable_type.gd" id="5_4ukv1"]
 [ext_resource type="Script" uid="uid://bub1nfmnk1re2" path="res://semana/libro_start.gd" id="6_j7k03"]
 [ext_resource type="Script" uid="uid://b3yrcfpcbpfhu" path="res://addons/drag_and_drop/resources/drop_behaviors/drop_behavior_replace.gd" id="7_by6ar"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_jk0a6"]
+[ext_resource type="FontFile" uid="uid://nf7n1kx8ahhd" path="res://semana/assets/Montserrat/static/Montserrat-Bold.ttf" id="8_j7k03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(380, 622)
@@ -21,10 +21,20 @@ metadata/_custom_type_script = "uid://b3yrcfpcbpfhu"
 script = ExtResource("5_4ukv1")
 id = "libro"
 
-[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("semanas")]
+[sub_resource type="FontVariation" id="FontVariation_4ukv1"]
+base_font = ExtResource("8_j7k03")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jk0a6"]
+font = SubResource("FontVariation_4ukv1")
+font_size = 49
+font_color = Color(0, 0, 0, 1)
+
+[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "semanas", "marcaExamen")]
 script = ExtResource("1_frfks")
 faltasStart = 4
+faltasCartel = NodePath("Cuaderno/Faltas")
 semanas = [NodePath("Calendario1")]
+marcaExamen = NodePath("MarcaExamen")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
 layer = -1
@@ -38,16 +48,6 @@ grow_vertical = 2
 texture = ExtResource("2_jk0a6")
 expand_mode = 1
 stretch_mode = 6
-
-[node name="Faltas" type="Label" parent="." unique_id=713707371]
-offset_left = 964.0
-offset_top = 163.0
-offset_right = 1087.0
-offset_bottom = 203.0
-text = "Quedan X faltas"
-label_settings = SubResource("LabelSettings_jk0a6")
-horizontal_alignment = 2
-vertical_alignment = 1
 
 [node name="Calendario1" type="HBoxContainer" parent="." unique_id=332263115]
 offset_left = 130.0
@@ -119,6 +119,7 @@ size_flags_horizontal = 3
 position = Vector2(40, 60)
 clase = 4
 id = 8
+examen = true
 
 [node name="Hora2" parent="Calendario1/Viernes" unique_id=1949908285 instance=ExtResource("3_j7k03")]
 position = Vector2(40, 185)
@@ -192,6 +193,24 @@ script = ExtResource("6_j7k03")
 cantidadTotal = 14
 materia = 4
 
+[node name="Cuaderno" type="Control" parent="." unique_id=474238070]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Faltas" type="Label" parent="Cuaderno" unique_id=713707371]
+layout_mode = 0
+offset_left = 239.99998
+offset_top = 168.0
+offset_right = 304.60266
+offset_bottom = 229.0
+rotation = -0.31066862
+text = "X"
+label_settings = SubResource("LabelSettings_jk0a6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Terminar" type="Button" parent="." unique_id=181572012]
 z_index = 11
 offset_left = 504.0
@@ -199,6 +218,11 @@ offset_top = 91.0
 offset_right = 645.0
 offset_bottom = 122.0
 text = "Empezar semana"
+
+[node name="MarcaExamen" type="Sprite2D" parent="." unique_id=1690333283]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_by6ar")
 
 [connection signal="estudiando" from="Calendario1/Lunes/Hora" to="." method="_on_hora_estudiando"]
 [connection signal="estudiando" from="Calendario1/Lunes/Hora2" to="." method="_on_hora_2_estudiando"]

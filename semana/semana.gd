@@ -2,7 +2,7 @@ extends Node2D
 
 @export var faltasStart: int
 var faltas: float
-var faltasCartel: Label
+@export var faltasCartel: Node
 
 var clasesSalteadas: String
 var currentSemana: int
@@ -10,6 +10,8 @@ var currentSemana: int
 
 const examenes = [2, 0, 4, 1]
 var examenesId: Array[int]
+var examenesNodos: Array[Node]
+@export var marcaExamen: Sprite2D
 
 var fullEstudiados: String
 var estudiados: Array[int]
@@ -43,7 +45,12 @@ func _ready():
 			var horas = d.get_children()
 			for h in horas:
 				h.connect("estudiando", estudiando)
-				h.setExamen(horaId in examenesId, horaId)
+				
+				var esExamen = horaId in examenesId
+				if esExamen:
+					examenesNodos.push_back(h)
+				
+				h.setExamen(esExamen, horaId)
 				horaId += 1
 	
 	mostrarCalendarios(currentSemana)
@@ -51,7 +58,6 @@ func _ready():
 	irClaseButton = $Terminar
 	
 	faltas = faltasStart + 1
-	faltasCartel = $Faltas
 	cambiarFaltas(true)
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -66,6 +72,9 @@ func mostrarCalendarios(i: int):
 		s.visible = soyEse
 		s.process_mode = modo
 	
+	marcaExamen.reparent(examenesNodos[i], false)
+	marcaExamen.visible = true
+	
 
 func cambiarFaltas(estudio: bool):
 	if !estudio:
@@ -74,9 +83,9 @@ func cambiarFaltas(estudio: bool):
 		faltas -= 1
 
 	if faltas >= 0:
-		faltasCartel.label_settings.font_color = Color(1.0, 1.0, 1.0, 1.0)
+		faltasCartel.label_settings.font_color = Color(0.0, 0.0, 0.0, 1.0)
 		irClaseButton.disabled = false
-		faltasCartel.text = "Quedan " + str(int(faltas)) + " faltas"
+		faltasCartel.text = str(int(faltas))
 	else:
 		faltasCartel.label_settings.font_color = Color(1,0,0)
 		irClaseButton.disabled = true
