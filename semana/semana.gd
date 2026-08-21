@@ -93,12 +93,14 @@ func cambiarFaltas(estudio: bool):
 		faltas -= 1
 
 	if faltas >= 0:
+		faltasCartel.text = str(int(faltas))
 		faltasCartel.label_settings.font_color = Color(0.0, 0.0, 0.0, 1.0)
 		irClaseButton.disabled = false
-		faltasCartel.text = str(int(faltas))
+		irClaseButton.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 	else:
 		faltasCartel.label_settings.font_color = Color(1,0,0)
 		irClaseButton.disabled = true
+		irClaseButton.self_modulate = Color(1.0, 0.0, 0.0, 0.588)
 	
 
 #func _on_hora_estudiando(materia, clase, colocado, id):
@@ -153,10 +155,11 @@ func _on_dialogic_signal(argument:String):
 		currentSemana += 1
 		
 		if currentSemana >= 4:
-			if Dialogic.VAR.goodEnding:
-				get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
-			else:
-				get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
+			Dialogic.start("res://menu/endings/ending.dtl")
+			#if Dialogic.VAR.goodEnding:
+				#get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
+			#else:
+				#get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
 		else:
 			mostrarCalendarios(currentSemana)
 	

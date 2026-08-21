@@ -9,6 +9,8 @@ func _ready():
 	
 
 func hoverOn():
-	offset_transform_scale = ogScale * 1.1
+	if !disabled:
+		offset_transform_scale = ogScale * 1.1
 func hoverOff():
-	offset_transform_scale = ogScale
+	if !disabled:
+		offset_transform_scale = ogScale

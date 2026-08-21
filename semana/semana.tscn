@@ -262,6 +262,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Fechas1" type="Sprite2D" parent="Cuaderno" unique_id=495715146]
+visible = false
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(296, 136)
 texture = ExtResource("9_4ukv1")

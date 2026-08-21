@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbj83vwrjaogf"
-path="res://.godot/imported/fondo2.jpeg-235775b34826f22920d6277f69fddb29.ctex"
+uid="uid://dr3lkkkd3temn"
+path="res://.godot/imported/Aula4.png-c00969832a35115cad02c1e67666e3bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://clases/fondo2.jpeg"
-dest_files=["res://.godot/imported/fondo2.jpeg-235775b34826f22920d6277f69fddb29.ctex"]
+source_file="res://clases/Aula4.png"
+dest_files=["res://.godot/imported/Aula4.png-c00969832a35115cad02c1e67666e3bf.ctex"]
 
 [params]
 

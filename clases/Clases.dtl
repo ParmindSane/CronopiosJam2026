@@ -1,10 +1,11 @@
+[style name="EstiloDialogic"]
 set {buenChamullo} = false
 set {huboChamullo} = false
 audio "res://clases/timbre.mp3"
 audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------SOLANA
 if !"0" in {ausentes}:
-	[background arg="res://clases/Aula.png" fade="1.0" wait="true"]
+	[background arg="res://clases/Aula1.png" fade="1.0" wait="true"]
 	if {examen} != 0.0:
 		join Solana (Clase) center
 		Solana: No existe algo como el buen arte, lo importante es que lo intenten.
@@ -34,7 +35,7 @@ if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------ANGELICA
 if !"1" in {ausentes}:
-	[background arg="res://clases/Aula.png" fade="1.0" transition="Push Left" wait="true"]
+	[background arg="res://clases/Aula2.png" fade="1.0" transition="Push Left" wait="true"]
 	if {examen} != 1.0:
 		join Angelica (Clase) center
 		Angelica: No se crean que los voy a aprobar sólo porque se portan bien. En el mundo real, las cosas no llegan en bandeja de plata.
@@ -57,7 +58,7 @@ if !"1" in {ausentes}:
 				Samuel: Mirá, vieja loca\: los dos sabemos que no estás en una posición como para arriesgarte de esa manera.
 				Samuel: Si llegara a surgir una declaración de alguien tan desagradable como yo, diciendo que alguien tan infame como vos le hizo algo, ¿a quién creés que le van a creer?
 				Samuel: No es necesario llegar a esos límites. Sólo tenés que corregir el error que cometiste al pasar las notas, y todo va a estar bien.
-				Angelica: ¿Eso es lo que querés? No es tan difícil ser claro, pendejito malcriado.
+				Angelica (Correct): ¿Eso es lo que querés? No es tan difícil ser claro, pendejito malcriado.
 			if {buenChamullo} == false:
 				Angelica (Incorrect): ¿Me estás jodiendo? No pensé que podrías caer tan bajo.
 leave --All--
@@ -65,7 +66,7 @@ if {huboChamullo} == true:
 	audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------FERNANDO
 if !"2" in {ausentes}:
-	[background arg="res://clases/Aula.png" fade="1.0" transition="Push Left" wait="true"]
+	[background arg="res://clases/Aula3.png" fade="1.0" transition="Push Left" wait="true"]
 	join Fernando center
 	if {examen} != 2.0:
 		Fernando: Último mes y ya terminamos, no me vengan a hinchar.
@@ -106,7 +107,7 @@ leave --All--
 audio RuidoPatio -
 # --------------------------------------------------ANGELICA
 if !"4" in {ausentes}:
-	[background arg="res://clases/Aula.png" fade="1.0" transition="Push Left" wait="true"]
+	[background arg="res://clases/Aula4.png" fade="1.0" transition="Push Left" wait="true"]
 	if {examen} != 4.0:
 		join Roberto (Clases) center
 		Roberto: Si un producto les llega fallado, tienen el derecho de ir a reclamar a capital... O creo que pueden llamar, también.
