@@ -12,9 +12,6 @@ func _ready():
 	audios.push_back($SonidoAgarrar)
 	audios.push_back($SonidoColocar)
 	
-	audios.push_back(AudioStream.new())
-	audios.push_back("res://semana/assets/papelColocar.mp3")
-	
 	ogScale = scale
 	mouse_entered.connect(hoverOn)
 	mouse_exited.connect(hoverOff)

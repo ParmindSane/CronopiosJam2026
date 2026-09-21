@@ -7,6 +7,7 @@ var cantidadActual: int
 var libroRef = preload("res://semana/libro.tscn")
 var libros: Array
 
+@export var rangoSpawn: float
 var randoms: RandomNumberGenerator
 
 func _ready():
@@ -21,9 +22,12 @@ func addLibro(i: int):
 	libros.push_back(libroNuevo)
 	add_child(libroNuevo)
 	
-	var xMap = Global.map(i, 0,cantidadTotal-1, -1, +1)*140
-	var posRandom = randoms.randf_range(-6, +6)
-	libroNuevo.position = Vector2(xMap+posRandom, posRandom)
+	var xMap = Global.map(i, 0,cantidadTotal-1, -1, +1)
+	var yMap = Global.map(xMap, -1,+1, 0,-1)
+	var posRandom = randoms.randf_range(-1, +1)*rangoSpawn
+	libroNuevo.position = Vector2(xMap*140+posRandom, yMap*rangoSpawn-posRandom)
+	
+	libroNuevo.z_index += floor(-libroNuevo.position.y)
 	
 	libroNuevo.setMateria(materia, i)
 	

@@ -64,6 +64,7 @@ func _ready():
 	cambiarFaltas(true)
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
+	#Dialogic.timeline_ended.connect()
 	
 
 func mostrarCalendarios(i: int):
@@ -103,10 +104,6 @@ func cambiarFaltas(estudio: bool):
 		irClaseButton.self_modulate = Color(1.0, 0.0, 0.0, 0.588)
 	
 
-#func _on_hora_estudiando(materia, clase, colocado, id):
-	#estudiando(materia, clase, colocado, id)
-#func _on_hora_2_estudiando(materia, clase, colocado, id):
-	#estudiando(materia, clase, colocado, id)
 func estudiando(materia, clase, colocado, id):
 	print("-------------------------------")
 	print(("Saqué " if !colocado else "Estudié ") + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
@@ -157,10 +154,17 @@ func _on_dialogic_signal(argument:String):
 		if currentSemana >= 4:
 			musiquita.stop()
 			Dialogic.start("res://menu/endings/ending.dtl")
-			#if Dialogic.VAR.goodEnding:
-				#get_tree().change_scene_to_file("res://menu/endings/good_ending.tscn")
-			#else:
-				#get_tree().change_scene_to_file("res://menu/endings/bad_ending.tscn")
+			$SkipIntro.show()
 		else:
 			mostrarCalendarios(currentSemana)
 	
+
+func _on_skip_pressed():
+			Dialogic.end_timeline()
+			
+			for c in get_tree().root.get_children():
+				if c.is_in_group("libros"):
+					c.queue_free()
+					print("Fugitivo borrado")
+			
+			get_tree().change_scene_to_file("res://menu/menu.tscn")

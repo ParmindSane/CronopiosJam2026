@@ -52,11 +52,12 @@ size = Vector2(60, 60)
 script = ExtResource("3_2rtx1")
 id = "libro"
 
-[node name="Libro" type="Area2D" unique_id=170571200]
+[node name="Libro" type="Area2D" unique_id=170571200 groups=["libro", "libros"]]
 script = ExtResource("1_6pxll")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=976870370]
+position = Vector2(0, 8.5)
 scale = Vector2(0.53, 0.53)
 sprite_frames = SubResource("SpriteFrames_qe4n8")
 animation = &"materia4"

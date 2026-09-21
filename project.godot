@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="CronopiosJam"
-run/main_scene="uid://jpiw3n4ypr6e"
+config/name="Con Gloria A Morir"
+run/main_scene="uid://cl76r8gam44x0"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://dsoi02nq8tias"
 
 [autoload]
 
@@ -55,12 +55,9 @@ animations/leave_default_length=0.5
 animations/leave_default_wait=true
 animations/cross_fade_default_length=0.0
 choices/autofocus_first=true
-choices/delay=0.2
-choices/reveal_delay=0
 choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
-text/autopauses={}
 audio/channel_defaults={
 "": {
 "audio_bus": "",
@@ -86,18 +83,20 @@ variables={
 "ausentes": "012",
 "buenChamullo": false,
 "examen": 1,
+"finCinematic": false,
 "goodEnding": true,
 "huboChamullo": false,
 "llegaBien": "0"
 }
 animations/cross_fade_default="Fade Cross"
+text/autopauses={}
 
 [display]
 
 window/size/mode=2
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [editor]
 
@@ -107,6 +106,10 @@ movie_writer/fps=30
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/drag_and_drop/plugin.cfg")
+
+[global_group]
+
+libros=""
 
 [input]
 

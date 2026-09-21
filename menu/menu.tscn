@@ -59,5 +59,28 @@ position = Vector2(207.99998, 149.99998)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("3_pbjm4")
 
+[node name="SkipIntro" type="CanvasLayer" parent="." unique_id=135572872]
+layer = 200
+visible = false
+
+[node name="Skip" type="TextureButton" parent="SkipIntro" unique_id=1037296056]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -295.0
+offset_top = -162.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.725, 0.725)
+texture_normal = ExtResource("3_svuvw")
+stretch_mode = 6
+script = ExtResource("4_svuvw")
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="SkipIntro/Skip" to="." method="_on_skip_pressed"]

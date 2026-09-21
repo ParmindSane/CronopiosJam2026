@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmf5piyftuosc" path="res://semana/assets/flecha.png" id="14_f160x"]
 [ext_resource type="Script" uid="uid://xrimkwpja1s4" path="res://menu/butt.gd" id="15_rgc1k"]
 [ext_resource type="AudioStream" uid="uid://c1elvmmpmnh57" path="res://semana/assets/A la noche.mp3" id="17_rgc1k"]
+[ext_resource type="Texture2D" uid="uid://rrhljpgmabh1" path="res://menu/flecha2.png" id="18_57tqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qe4n8"]
 size = Vector2(380, 622)
@@ -83,10 +84,10 @@ marcaExamen = NodePath("MarcaExamen")
 irClaseButton = NodePath("Terminar")
 musiquita = NodePath("Musiquita")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=201785069]
+[node name="Fondo" type="CanvasLayer" parent="." unique_id=201785069]
 layer = -1
 
-[node name="Fondo" type="TextureRect" parent="CanvasLayer" unique_id=853488876]
+[node name="TextureRect" type="TextureRect" parent="Fondo" unique_id=853488876]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -218,15 +219,17 @@ accepted_draggable_types = Array[ExtResource("5_4ukv1")]([SubResource("Resource_
 metadata/_custom_type_script = "uid://nj1hdjl1vob2"
 
 [node name="Libros0" type="Node2D" parent="Libros" unique_id=1643653101]
-position = Vector2(0, -42)
+position = Vector2(0, -44)
 script = ExtResource("6_j7k03")
 cantidadTotal = 8
+rangoSpawn = 5.0
 
 [node name="Libros1" type="Node2D" parent="Libros" unique_id=1554100820]
-position = Vector2(0, 203)
+position = Vector2(0, 202)
 script = ExtResource("6_j7k03")
 cantidadTotal = 19
 materia = 1
+rangoSpawn = 15.0
 
 [node name="Libros2" type="Node2D" parent="Libros" unique_id=1216710622]
 position = Vector2(0, -186)
@@ -235,10 +238,11 @@ cantidadTotal = 3
 materia = 2
 
 [node name="Libros4" type="Node2D" parent="Libros" unique_id=1034012713]
-position = Vector2(0, 74)
+position = Vector2(0, 71)
 script = ExtResource("6_j7k03")
 cantidadTotal = 14
 materia = 4
+rangoSpawn = 12.0
 
 [node name="Cuaderno" type="Control" parent="." unique_id=474238070]
 layout_mode = 3
@@ -320,6 +324,26 @@ stream = ExtResource("17_rgc1k")
 autoplay = true
 parameters/looping = true
 
+[node name="SkipIntro" type="CanvasLayer" parent="." unique_id=1828923068]
+layer = 200
+visible = false
+
+[node name="Skip" type="TextureButton" parent="SkipIntro" unique_id=934376082]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -162.0
+offset_right = 295.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.725, 0.725)
+texture_normal = ExtResource("18_57tqs")
+stretch_mode = 6
+flip_h = true
+script = ExtResource("15_rgc1k")
+
 [connection signal="estudiando" from="Calendario1/Lunes/Hora" to="." method="_on_hora_estudiando"]
 [connection signal="estudiando" from="Calendario1/Lunes/Hora2" to="." method="_on_hora_2_estudiando"]
 [connection signal="estudiando" from="Calendario1/Martes/Hora" to="." method="_on_hora_estudiando"]
@@ -339,3 +363,4 @@ parameters/looping = true
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros2" method="_on_drop_zone_drop_applied"]
 [connection signal="drop_applied" from="Libros/DropZone" to="Libros/Libros4" method="_on_drop_zone_drop_applied"]
 [connection signal="pressed" from="Terminar" to="." method="_on_terminar_pressed"]
+[connection signal="pressed" from="SkipIntro/Skip" to="." method="_on_skip_pressed"]

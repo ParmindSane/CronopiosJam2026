@@ -142,10 +142,4 @@ leave --All--
 # --------------------------------------------------ENDING
 if {buenChamullo} == false:
 	set {goodEnding} = false
-if {goodEnding} == true:
-	# goodEnding
-else:
-	# badEnding
-[clear time="0.0" portraits="false" background="false" positions="false" style="false"]
 [signal arg="finde"]
-[end_timeline]
