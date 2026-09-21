@@ -28,12 +28,15 @@ func setMateria(_materia:int, _id: int, pi: Vector2):
 	
 	posInicial = pi
 	position = posInicial
+	z_index = floor(abs(pi.y))
 	
 
 func _on_draggable_drag_started(area):
 	audios[0].play(0)
+	
 func _on_draggable_drag_ended(area, drop_spot):
-	audios[1].play(0)
+	if drop_spot != null:
+		audios[1].play(0)
 	
 
 func hoverOn():

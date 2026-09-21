@@ -15,7 +15,7 @@
 &"display_name": "Fernando",
 &"mirror": false,
 &"nicknames": [""],
-&"offset": Vector2(0, 0),
+&"offset": Vector2(0, 40),
 &"portraits": {
 "Fernando": {
 "export_overrides": {

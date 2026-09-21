@@ -1,15 +1,15 @@
 extends Node2D
 
+var clasesSalteadas: String
+@export var currentSemana: int
+@export var semanas: Array[HBoxContainer]
+
 @export var faltasStart: int
 var faltas: float
 @export var faltasCartel: Node
 
 @export var fechasCarteles: Array[Sprite2D]
 @export var numSemanaCartel: AnimatedSprite2D
-
-var clasesSalteadas: String
-var currentSemana: int
-@export var semanas: Array[HBoxContainer]
 
 const examenes = [2, 0, 4, 1]
 var examenesId: Array[int]
@@ -24,8 +24,11 @@ const librosTotales = [8, 19, 3, 0, 14]
 
 @export var musiquita: AudioStreamPlayer
 
+var tutorial: bool
+
 func _ready():
-	currentSemana = 0
+	if currentSemana >= 4:
+		currentSemana = 3
 	
 	for clase in examenes:
 		var i = examenes.find(clase)
@@ -64,7 +67,10 @@ func _ready():
 	cambiarFaltas(true)
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
-	#Dialogic.timeline_ended.connect()
+	
+	tutorial = true
+	irClaseButton.disabled = true
+	irClaseButton.self_modulate = Color(1.0, 1.0, 1.0, 0.6)
 	
 
 func mostrarCalendarios(i: int):
@@ -101,10 +107,15 @@ func cambiarFaltas(estudio: bool):
 	else:
 		faltasCartel.label_settings.font_color = Color(1,0,0)
 		irClaseButton.disabled = true
-		irClaseButton.self_modulate = Color(1.0, 0.0, 0.0, 0.588)
+		irClaseButton.self_modulate = Color(1.0, 0.0, 0.0, 0.6)
 	
 
 func estudiando(materia, clase, colocado, id):
+	if tutorial:
+		irClaseButton.disabled = false
+		irClaseButton.self_modulate = Color(1.0, 1.0, 1.0, 1.0)
+		tutorial = false
+	
 	print("-------------------------------")
 	print(("Saqué " if !colocado else "Estudié ") + str(materia) + " en la casilla " + str(id) + " de clase " + str(clase))
 	
@@ -132,7 +143,7 @@ func estudiando(materia, clase, colocado, id):
 	
 	print("Vengo estudiando " + str(estudiados))
 	print("Debo estudiar " + str(librosTotales))
-	print("Terminé de estudiar " + fullEstudiados)
+	print("Terminé de estudiar [" + fullEstudiados + "]")
 	
 
 func _on_terminar_pressed():

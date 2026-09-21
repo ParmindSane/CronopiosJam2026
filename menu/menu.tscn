@@ -76,9 +76,9 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 offset_transform_enabled = true
-offset_transform_scale = Vector2(0.725, 0.725)
+offset_transform_scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("3_svuvw")
-stretch_mode = 6
+stretch_mode = 0
 script = ExtResource("4_svuvw")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]

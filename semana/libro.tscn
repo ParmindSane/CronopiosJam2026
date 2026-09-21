@@ -74,9 +74,11 @@ metadata/_custom_type_script = "uid://crmnw3ldr3xev"
 
 [node name="SonidoAgarrar" type="AudioStreamPlayer" parent="." unique_id=697788377]
 stream = ExtResource("4_6pxll")
+volume_db = -20.0
 
 [node name="SonidoColocar" type="AudioStreamPlayer" parent="." unique_id=393916043]
 stream = ExtResource("5_2rtx1")
+volume_db = -10.0
 
 [connection signal="drag_ended" from="Draggable" to="." method="_on_draggable_drag_ended"]
 [connection signal="drag_started" from="Draggable" to="." method="_on_draggable_drag_started"]

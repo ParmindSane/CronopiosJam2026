@@ -1,7 +1,7 @@
 [style name="EstiloDialogic"]
 set {buenChamullo} = false
 set {huboChamullo} = false
-audio "res://clases/timbre.mp3"
+audio "res://clases/timbre.mp3" [volume="-20.0"]
 audio music "res://clases/claseNormal.mp3"
 # --------------------------------------------------SOLANA
 if !"0" in {ausentes}:

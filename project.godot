@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Con Gloria A Morir"
-run/main_scene="uid://cl76r8gam44x0"
+run/main_scene="uid://jpiw3n4ypr6e"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="uid://dsoi02nq8tias"
 
@@ -90,10 +90,12 @@ variables={
 }
 animations/cross_fade_default="Fade Cross"
 text/autopauses={}
+choices/delay=0.2
+choices/reveal_delay=0
 
 [display]
 
-window/size/mode=2
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"

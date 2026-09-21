@@ -26,9 +26,8 @@ func addLibro(i: int, pi: Vector2):
 		var xMap = Global.map(i, 0,cantidadTotal-1, -1, +1)
 		var yMap = Global.map(xMap, -1,+1, 0,1)
 		var posRandom = randoms.randf_range(0, 1)*rangoSpawn
-		pi = Vector2(xMap*140+posRandom, -yMap*rangoSpawn-posRandom)
+		pi = Vector2(xMap*140+posRandom*2, -yMap*rangoSpawn-posRandom)
 	
-	libroNuevo.z_index = floor(abs(pi.y))
 	libroNuevo.setMateria(materia, i, pi)
 	
 

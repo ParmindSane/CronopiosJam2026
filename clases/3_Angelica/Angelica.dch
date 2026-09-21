@@ -15,7 +15,7 @@
 &"display_name": "Angélica",
 &"mirror": false,
 &"nicknames": [""],
-&"offset": Vector2(0, 0),
+&"offset": Vector2(0, 40),
 &"portraits": {
 "Clase": {
 "export_overrides": {

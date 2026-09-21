@@ -15,7 +15,7 @@
 &"display_name": "Roberto",
 &"mirror": false,
 &"nicknames": [""],
-&"offset": Vector2(0, 0),
+&"offset": Vector2(0, 40),
 &"portraits": {
 "Clases": {
 "export_overrides": {

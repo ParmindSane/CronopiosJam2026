@@ -73,13 +73,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("faltasCartel", "fechasCarteles", "numSemanaCartel", "semanas", "marcaExamen", "irClaseButton", "musiquita")]
+[node name="Semana" type="Node2D" unique_id=212412604 node_paths=PackedStringArray("semanas", "faltasCartel", "fechasCarteles", "numSemanaCartel", "marcaExamen", "irClaseButton", "musiquita")]
 script = ExtResource("1_frfks")
+semanas = [NodePath("Calendario1")]
 faltasStart = 4
 faltasCartel = NodePath("Cuaderno/Faltas")
 fechasCarteles = [NodePath("Cuaderno/Fechas1"), NodePath("Cuaderno/Fechas2"), NodePath("Cuaderno/Fechas3")]
 numSemanaCartel = NodePath("Cuaderno/NumSemana")
-semanas = [NodePath("Calendario1")]
 marcaExamen = NodePath("MarcaExamen")
 irClaseButton = NodePath("Terminar")
 musiquita = NodePath("Musiquita")
@@ -339,7 +339,7 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 offset_transform_enabled = true
-offset_transform_scale = Vector2(0.725, 0.725)
+offset_transform_scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("18_57tqs")
 stretch_mode = 6
 flip_h = true
