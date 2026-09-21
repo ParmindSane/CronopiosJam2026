@@ -2,13 +2,17 @@ extends Area2D
 
 var id: int
 var materia: int
+
 var sprite: AnimatedSprite2D
 var audios: Array[AudioStreamPlayer]
 
 var ogScale: Vector2
+var posInicial: Vector2
 
 func _ready():
 	sprite = $Sprite2D
+	sprite.flip_h = [true, false].pick_random()
+	
 	audios.push_back($SonidoAgarrar)
 	audios.push_back($SonidoColocar)
 	
@@ -17,11 +21,13 @@ func _ready():
 	mouse_exited.connect(hoverOff)
 	
 
-func setMateria(_materia:int, _id: int):
+func setMateria(_materia:int, _id: int, pi: Vector2):
 	id = _id
 	materia = _materia
 	sprite.play("materia" + str(materia))
-	#sprite.self_modulate = Color.from_hsv(Global.map(materia, -1,3, 40,360)/360, 1,1)
+	
+	posInicial = pi
+	position = posInicial
 	
 
 func _on_draggable_drag_started(area):

@@ -14,25 +14,25 @@ func _ready():
 	randoms = RandomNumberGenerator.new()
 	
 	for i in range(cantidadTotal):
-		addLibro(i)
+		addLibro(i, Vector2(0,0))
 	
 
-func addLibro(i: int):
+func addLibro(i: int, pi: Vector2):
 	var libroNuevo = libroRef.instantiate()
 	libros.push_back(libroNuevo)
 	add_child(libroNuevo)
 	
-	var xMap = Global.map(i, 0,cantidadTotal-1, -1, +1)
-	var yMap = Global.map(xMap, -1,+1, 0,-1)
-	var posRandom = randoms.randf_range(-1, +1)*rangoSpawn
-	libroNuevo.position = Vector2(xMap*140+posRandom, yMap*rangoSpawn-posRandom)
+	if pi == Vector2(0,0):
+		var xMap = Global.map(i, 0,cantidadTotal-1, -1, +1)
+		var yMap = Global.map(xMap, -1,+1, 0,1)
+		var posRandom = randoms.randf_range(0, 1)*rangoSpawn
+		pi = Vector2(xMap*140+posRandom, -yMap*rangoSpawn-posRandom)
 	
-	libroNuevo.z_index += floor(-libroNuevo.position.y)
-	
-	libroNuevo.setMateria(materia, i)
+	libroNuevo.z_index = floor(abs(pi.y))
+	libroNuevo.setMateria(materia, i, pi)
 	
 
 func _on_drop_zone_drop_applied(zone, area, plan):
 	if area.materia == materia:
-		addLibro(area.id)
+		addLibro(area.id, area.posInicial)
 		area.queue_free()

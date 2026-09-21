@@ -222,20 +222,21 @@ metadata/_custom_type_script = "uid://nj1hdjl1vob2"
 position = Vector2(0, -44)
 script = ExtResource("6_j7k03")
 cantidadTotal = 8
-rangoSpawn = 5.0
+rangoSpawn = 7.0
 
 [node name="Libros1" type="Node2D" parent="Libros" unique_id=1554100820]
 position = Vector2(0, 202)
 script = ExtResource("6_j7k03")
 cantidadTotal = 19
 materia = 1
-rangoSpawn = 15.0
+rangoSpawn = 17.0
 
 [node name="Libros2" type="Node2D" parent="Libros" unique_id=1216710622]
-position = Vector2(0, -186)
+position = Vector2(0, -188)
 script = ExtResource("6_j7k03")
 cantidadTotal = 3
 materia = 2
+rangoSpawn = 5.0
 
 [node name="Libros4" type="Node2D" parent="Libros" unique_id=1034012713]
 position = Vector2(0, 71)
