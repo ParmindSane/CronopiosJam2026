@@ -6,6 +6,7 @@ if {goodEnding} == true:
 	[wait time="3.0" hide_text="false"]
 	label goodEnding
 	[background arg="res://menu/endings/FinalBueno_2.png" fade="6.0" wait="true"]
+	[signal arg="endingLoop"]
 	[background arg="res://menu/endings/FinalBueno_1.png" fade="6.0" wait="true"]
 	jump goodEnding
 else:
@@ -15,5 +16,6 @@ else:
 	[wait time="3.0" hide_text="false" skippable="true"]
 	label badEnding
 	[background arg="res://menu/endings/FinalMalo_2.png" fade="6.0" wait="true"]
+	[signal arg="endingLoop"]
 	[background arg="res://menu/endings/FinalMalo_1.png" fade="6.0" wait="true"]
 	jump badEnding

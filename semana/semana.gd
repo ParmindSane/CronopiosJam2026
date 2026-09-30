@@ -165,9 +165,10 @@ func _on_dialogic_signal(argument:String):
 		if currentSemana >= 4:
 			musiquita.stop()
 			Dialogic.start("res://menu/endings/ending.dtl")
-			$SkipIntro.show()
 		else:
 			mostrarCalendarios(currentSemana)
+	elif argument == "endingLoop":
+		$SkipIntro.show()
 	
 
 func _on_skip_pressed():
